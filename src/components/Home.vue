@@ -42,7 +42,7 @@
           </b-col>
           <b-col cols="12" class="nopadding">
             <div class="sub-price"></div>
-            <b-button class="btn-dftr">
+            <b-button @click="goto('grass')" class="btn-dftr">
               <span class="white">DAFTAR SEKARANG</span>
             </b-button>
             <h1 class="title-subhome-big green" style="margin-top: 80px;">TENTANG #LET'SSHOLATBERSAMAAYAH</h1>
@@ -54,33 +54,145 @@
             </p>
           </b-col>
           <b-col>
-            <div>
+            <!-- <div>
               <youtube :video-id="videoId" player-width="800" player-height="400" :player-vars="{autoplay: 0}"></youtube>
-            </div>
+            </div> -->
           </b-col>
           <b-col cols="12">
             <h1 class="title-subhome-big green" style="margin-top: 40px;">APA SAJA SYARAT MENGIKUTI <br>
               #LET'SSHOLATBERSAMAAYAH ?
             </h1>
             <b-row>
-              <b-col cols="4">
-                <b-img :src="require('../assets/dropdown.png')" fluid/>
-                <p>Muslim</p>
-              </b-col>
-              <b-col cols="4">
-
-              </b-col>
-              <b-col cols="4">
-
+              <b-col cols="10" offset="1" style="padding-top: 60px;">
+                <b-row>
+                  <b-col cols="4" v-for="(logo,index) in logoText" :key="index">
+                    <div class="col-logo">
+                      <b-img class="" :src="logo.image" fluid />
+                      <p class="logo-text">{{logo.title}}</p>
+                    </div> 
+                  </b-col>
+                </b-row>
               </b-col>
             </b-row>
           </b-col>
+          <b-col cols="12" class="nopadding">
+            <div class="col-orange">
+              <h1 class="title-subhome-big white">KRITERIA PEMENANG CHALLANGE <br> 
+                #LET'SSHOLATBERSAMAAYAH
+              </h1>
+              <b-col cols="8" offset="2">
+                <div>
+                  <ol class="winner-criteria">
+                    <li>
+                      <strong> Dewan juri akan memilih 5 peserta dengan foto dan cerita terbaik.</strong>
+                      <br>
+                      <p>(Catatan: Kelima peserta ini akan divoting oleh publik 
+                        untuk <br> menentukan 1 pemenang utama dan 4 pemenang terbaik)</p>
+                    </li>
+                    <li>
+                      <strong> 5 pemenang terunik dinilai dari peserta dengan moment sholat terunik.</strong>
+                    </li>
+                    <li>
+                      <strong> 1 pemenang favorit dinilai dari like terbanyak.</strong>
+                    </li>
+                  </ol>
+                </div>
+              </b-col>
+            </div>
+          </b-col>
+          <b-col  cols="12" class=""> 
+            <b-row>
+              <div id="grass" class="background-grass">
+                <h1 class="brown title-subhome-big" style="margin-bottom: 70px;">DAFTARKAN KELUARGA AYAH DAN BUNDA <br> 
+                  DENGAN MENGISI FORM DI BAWAH INI!
+                </h1>
+                <b-col cols="10" offset="1">
+                  <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                    <b-row>
+                      <b-col cols="4">
+                      <div class="upload-img">
+                        <b-form-file v-model="form.image" :state="Boolean(file)" style="display: none;" 
+                        ref="inputImage">
+                        </b-form-file>
+                        <div class="upload-img-striped text-center" @click="simulateClick($refs.inputImage)">
+                          <h3 style="margin-top: 60px;">Upload foto <br> Disini <br>
+                            (Max 2mb & jpg) 
+                          </h3>
+                        </div>
+                      </div>
+                    </b-col>
+                    <b-col cols="8">
+                      <b-form-group id="exampleInputGroup1" label-for="exampleInput1">
+                        <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.anak" required
+                          placeholder="Masukan Nama Anak">
+                        </b-form-input>
+                        <b-form-input class="inputText" id="exampleInput1" type="number" v-model="form.usia" required
+                          placeholder="Masukan Usia Anak">
+                        </b-form-input>
+                        <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.ayah" required
+                          placeholder="Masukan Nama Ayah">
+                        </b-form-input>
+                        <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.bunda" required
+                          placeholder="Masukan Nama Bunda">
+                        </b-form-input>
+                      </b-form-group>
+                    </b-col>
+                    <b-col cols="12">
+                      <b-form-group>
+                        <b-row>
+                          <b-col cols="6">
+                            <b-form-input class="inputText" id="exampleInput1" type="email" v-model="form.email" required
+                            placeholder="Masukan Email Ayah/Bunda">
+                            </b-form-input>
+                          </b-col>
+                          <b-col cols="6">
+                            <b-form-input class="inputText" id="exampleInput1" type="number" v-model="form.nohp" required
+                            placeholder="No.Handphone">
+                          </b-form-input>
+                          </b-col>
+                        </b-row>                       
+                        <b-form-textarea id="textarea1"
+                          class="inputText"
+                          v-model="form.alamat"
+                          placeholder="Alamat"
+                          :rows="3"
+                          :max-rows="6">
+                        </b-form-textarea>
+                        <b-form-textarea id="textarea1"
+                          class="inputText"
+                          v-model="form.kisah"
+                          placeholder="Kisah sholat bersama anakku"
+                          :rows="3"
+                          :max-rows="6">
+                        </b-form-textarea>
+                      </b-form-group>
+                      
+                    </b-col>
+                    </b-row>
+                    <b-button class="btn-dftr">
+                      <span class="white">DAFTAR</span>
+                    </b-button>
+                  </b-form>
+                </b-col>
+              </div>
+            </b-row>
+          </b-col>
+          <b-col cols="12" class="nopadding">
+            <b-img style="margin-top: -110px;" :src="require('../assets/bannerlast.jpg')" fluid/>
+            <b-button class="btn-dftr" style="margin-top: -200px;">
+              <span class="white">DAPATKAN DISINI</span>
+            </b-button>
+          </b-col>
+          <bootfoot></bootfoot>
+          <copyright></copyright>
         </b-row>
       </b-container>
   </div>
 </template>
 
 <script>
+import bootfoot from '@/components/footer'
+import copyright from '@/components/copyright'
 import slick from 'vue-slick'
 import axios from 'axios'
 import 'slick-carousel/slick/slick.css'
@@ -88,11 +200,33 @@ import 'slick-carousel/slick/slick-theme.css'
 
 export default {
   name: 'Home',
-  components: { 
-    "slick": slick,
+  components: {
+      slick,
+      bootfoot,
+      copyright
   },
   data () {
     return {
+      // upload file
+      form: {
+        image: '',
+        anak: '',
+        usia: '',
+        ayah: '',
+        bunda: '', 
+        nohp: '',
+        email: '',
+        alamat: '',
+        kisah: ''
+      },
+      show: true,
+      file: null,
+      types: [
+        'Nama',
+        'Usia',
+        'Nama Ayah',
+      ],
+      // slider
       slide: 0,
       sliding: null,
       slickOptions: {
@@ -109,19 +243,22 @@ export default {
         "assets/4foto.jpeg",
         "assets/5foto.jpeg",
       ],
+      logoText: [],
       videoId: '_7ouPGxu0OE',
     }
   },
+  watch: {
+    logoText: function(val){
+      this.logoText = val;
+    }
+  },
+  created: function(){
+    this.loadData();
+  },
   methods: {
-    loadDataImageChamp: function() {
-        var self = this;
-        axios.get('/static/logo.json')
-        .then(function (response){
-          self.champimage = response.data.result.data;
-        })
-        .catch(function (error){
-          self.champimage = 'error dude' + error;
-        })
+    onSubmit (evt) {
+      evt.preventDefault();
+      alert(JSON.stringify(this.form));
     },
     goto(refName) {
         var element = document.querySelector('#'+refName);
@@ -129,6 +266,31 @@ export default {
         $('html, body').animate(
             {scrollTop: rect.top}, 
         1000);
+    },
+    onReset (evt) {
+      evt.preventDefault();
+      /* Reset our form values */
+      this.form.email = '';
+      this.form.name = '';
+      this.form.food = null;
+      this.form.checked = [];
+      /* Trick to reset/clear native browser form validation state */
+      this.show = false;
+      this.$nextTick(() => { this.show = true });
+    },
+    loadData: function() {
+        var self = this;
+        axios.get('/static/logo.json')
+        .then(function (response){
+          self.logoText = response.data.result.data;
+        })
+        .catch(function (error){
+          self.logoText = 'error dude' + error;
+        })
+    },
+    setImage: function (file) {
+      this.hasImage = true
+      this.image = file
     },
     next() {
       console.log('test');
@@ -152,7 +314,13 @@ export default {
     method (url) {
       this.videoId = this.$youtube.getIdFromURL(url);
       this.startTime = this.$youtube.getTimeFromURL(url);
+    },
+    simulateClick(target){
+      target.$el.children[0].click();
     }
+  },
+  mounted: function() {
+    
   }
 }
 </script>
@@ -177,16 +345,11 @@ export default {
 .white {
   color: #ffffff;
 }
+.brown {
+  color: #3F3933;
+}
 h1, h2 {
   font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
 }
 a {
   color: #42b983;
@@ -286,12 +449,12 @@ img.icon-btn-dropdown {
 }
 .sub-price {
   background-image: url('../assets/prize.jpg');
-    height: 640px;
-    background-size: cover;
-    width: 100%;
-    z-index: 10;
-    display: block;
-    position: relative;
+  height: 640px;
+  background-size: cover;
+  width: 100%;
+  z-index: 10;
+  display: block;
+  position: relative;
 }
 .btn-dftr {
   background-color: #F69520;
@@ -313,5 +476,68 @@ img.icon-btn-dropdown {
 .about-text {
   font-size: 20px;
   letter-spacing: 1px;
+}
+.col-logo {
+  padding: 20px;
+}
+.logo-text {
+  font-size: 24px;
+  width: 300px;
+  text-align: center;
+  margin: 10px auto;
+}
+.col-orange {
+  background-color: #F69520;
+  display: block;
+  padding: 70px 0px 50px;
+}
+ol.winner-criteria {
+  padding: 20px 0px;
+  text-align: left;
+  color: #ffffff;
+  list-style-type: decimal !important;
+  
+}
+ol.winner-criteria li {
+  width: 100%;
+  font-size: 24px;
+  letter-spacing: 1px;
+  padding: 20px 0px;
+}
+ol.winner-criteria li > p {
+  width: 100%;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 10px 0px;
+}
+.background-grass {
+  background-image: url('../assets/grass.png');
+  padding: 80px 10px 40px;
+  background-size: cover;
+  height: 1300px;
+  width: 100%;
+  z-index: 10;
+  display: block;
+  position: relative;
+  margin-top: -40px;
+}
+.upload-img {
+  width: 100%;
+  background-color: #ffffff;
+  height: 300px;
+  text-align: left;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+.upload-img-striped {
+  border: 5px dashed #888;
+  border-radius: 10px;
+  margin: auto;
+  height: 240px;
+}
+.inputText {
+  margin: 0px 0px 20px;
+  padding: 15px;
 }
 </style>
