@@ -46,7 +46,7 @@
               <span class="white">DAFTAR SEKARANG</span>
             </b-button>
             <h1 class="title-subhome-big green" style="margin-top: 80px;">TENTANG #LET'SSHOLATBERSAMAAYAH</h1>
-            <p class="about-text">
+            <p class="about-text" style="margin-bottom: 40px;">
               Ayo buat pendidikan sholat untuk anak jadi makin berkesan dengan <br>
               mengikuti Challange berupa Photo Contest dengan tema "Let's Sholat <br> 
               Bersama Ayah" Mari bersama-sama kita tumbuhkan generasi penerus <br>
@@ -55,8 +55,25 @@
           </b-col>
           <b-col>
             <div>
-              <youtube :video-id="videoId" :player-vars="playerVars" @playing="playing"></youtube>
+              <youtube :video-id="videoId" player-width="800" player-height="400" :player-vars="{autoplay: 0}"></youtube>
             </div>
+          </b-col>
+          <b-col cols="12">
+            <h1 class="title-subhome-big green" style="margin-top: 40px;">APA SAJA SYARAT MENGIKUTI <br>
+              #LET'SSHOLATBERSAMAAYAH ?
+            </h1>
+            <b-row>
+              <b-col cols="4">
+                <b-img :src="require('../assets/dropdown.png')" fluid/>
+                <p>Muslim</p>
+              </b-col>
+              <b-col cols="4">
+
+              </b-col>
+              <b-col cols="4">
+
+              </b-col>
+            </b-row>
           </b-col>
         </b-row>
       </b-container>
@@ -64,16 +81,15 @@
 </template>
 
 <script>
-import VueYoutube from 'vue-youtube'
 import slick from 'vue-slick'
+import axios from 'axios'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 export default {
   name: 'Home',
   components: { 
-    slick,
-    youtube 
+    "slick": slick,
   },
   data () {
     return {
@@ -93,13 +109,20 @@ export default {
         "assets/4foto.jpeg",
         "assets/5foto.jpeg",
       ],
-      videoId: 'lG0Ys-2d4MA',
-      playerVars: {
-        autoplay: 1
-      }
+      videoId: '_7ouPGxu0OE',
     }
   },
   methods: {
+    loadDataImageChamp: function() {
+        var self = this;
+        axios.get('/static/logo.json')
+        .then(function (response){
+          self.champimage = response.data.result.data;
+        })
+        .catch(function (error){
+          self.champimage = 'error dude' + error;
+        })
+    },
     goto(refName) {
         var element = document.querySelector('#'+refName);
         var rect = element.getBoundingClientRect();
@@ -120,16 +143,15 @@ export default {
             this.$refs.slick.reSlick();
         });
     },
-    playVideo() {
-      this.player.playVideo()
+    ready (player) {
+      this.player = player
     },
-    playing() {
-      console.log('\o/ we are watching!!!')
+    playing (player) {
+      // The player is playing a video.
     },
-  },
-  computed: {
-    player () {
-      return this.$refs.youtube.player
+    method (url) {
+      this.videoId = this.$youtube.getIdFromURL(url);
+      this.startTime = this.$youtube.getTimeFromURL(url);
     }
   }
 }

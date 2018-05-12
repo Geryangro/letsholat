@@ -1,0 +1,19 @@
+{
+   "status":"ok",
+   "result":{
+      "data":[
+         {
+            "title":"satu",
+            "image":"static/logo1.png"
+         },
+         {
+            "title":"dua",
+            "image":"static/logo1.png"
+         },
+         {
+            "title":"tiga",
+            "image":"static/logo1.png"
+         }
+      ]
+   }
+}
