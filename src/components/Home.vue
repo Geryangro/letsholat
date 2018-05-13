@@ -177,14 +177,7 @@
               </div>
             </b-row>
           </b-col>
-          <b-col cols="12" class="nopadding">
-            <b-img style="margin-top: -110px;" :src="require('../assets/bannerlast.jpg')" fluid/>
-            <router-link to="/candidate">
-              <b-button class="btn-dftr" style="margin-top: -200px;">
-                <span class="white">DAPATKAN DISINI</span>
-              </b-button>
-            </router-link>
-          </b-col>
+          <bannerlast style="margin-top: -110px;"/>
           <bootfoot></bootfoot>
           <copyright></copyright>
         </b-row>
@@ -193,6 +186,7 @@
 </template>
 
 <script>
+import bannerlast from '@/components/bannerlast'
 import bootfoot from '@/components/footer'
 import copyright from '@/components/copyright'
 import slick from 'vue-slick'
@@ -205,7 +199,8 @@ export default {
   components: {
       slick,
       bootfoot,
-      copyright
+      copyright,
+      bannerlast
   },
   data () {
     return {
