@@ -2,26 +2,30 @@
   <div id="home">
       <b-container fluid>
         <b-row>
-          <div class="nopadding homecls">
+          <b-col cols="12" class="nopadding">
+            <div class="nopadding homecls">
               <div class="">
                 <b-img @click="goto('check')" class="icon-btn-dropdown" :src="require('../assets/dropdown.png')" fluid/>
               </div>
-          </div>
+            </div>
+          </b-col>
           <b-col cols="12" class="sub-homecls" id="porto">
             <div id="check" class="sub-homecls-second">
               <p class="title-subhome green">Yuk Ikutan <strong>#LET'SSHOLATBERSAMAAYAH !</strong></p>
               <h1 class="title-subhome-big green">KONTESTAN SEBELUMNYA</h1>
               <b-row>
-                <b-col cols="8">
+                <b-col cols="12" md="8">
                   <div class="slider">
                     <slick ref="slick" :options="slickOptions">
                       <div v-for="(img,index) in imgSlide" :key="index">
                         <b-img class="background-img" :src="require('../'+img)" fluid />
                       </div>
                     </slick>
+                    <p>lihat kisah #let'sSholatBersamaAyah lainnya</p>
+                      <router-link to="/candidate"><button class="btn-lets"><span>klik disini</span></button></router-link>
                   </div>
                 </b-col>
-                <b-col cols="4">
+                <b-col cols="12" md="4">
                   <div class="middle">
                     <p>
                     Berikut ini <br>
@@ -45,29 +49,36 @@
             <b-button @click="goto('grass')" class="btn-dftr">
               <span class="white">DAFTAR SEKARANG</span>
             </b-button>
-            <h1 class="title-subhome-big green" style="margin-top: 80px;">TENTANG #LET'SSHOLATBERSAMAAYAH</h1>
-            <p class="about-text" style="margin-bottom: 40px;">
-              Ayo buat pendidikan sholat untuk anak jadi makin berkesan dengan <br>
-              mengikuti Challange berupa Photo Contest dengan tema "Let's Sholat <br> 
-              Bersama Ayah" Mari bersama-sama kita tumbuhkan generasi penerus <br>
-              menjadi orang-orang yang mencintai sholat!
-            </p>
+            <div class="col-text-about">
+              <h1 class="title-subhome-big green">TENTANG #LET'SSHOLATBERSAMAAYAH</h1>
+              <p class="about-text">
+                Ayo buat pendidikan sholat untuk anak jadi makin berkesan dengan 
+                mengikuti Challange berupa Photo Contest dengan tema "Let's Sholat  
+                Bersama Ayah" Mari bersama-sama kita tumbuhkan generasi penerus 
+                menjadi orang-orang yang mencintai sholat!
+              </p>
+            </div>
           </b-col>
           <b-col>
-            <!-- <div>
+            <div v-if="$resize && $mq.above(992)">
               <youtube :video-id="videoId" player-width="800" player-height="400" :player-vars="{autoplay: 0}"></youtube>
-            </div> -->
+            </div>
+            <div v-else>
+              <youtube :video-id="videoId" player-width="400" player-height="300" :player-vars="{autoplay: 0}"></youtube>
+            </div>
           </b-col>
           <b-col cols="12">
-            <h1 class="title-subhome-big green" style="margin-top: 40px;">APA SAJA SYARAT MENGIKUTI <br>
+            <div class="col-text-about">
+              <h1 class="title-subhome-big green">APA SAJA SYARAT MENGIKUTI <br>
               #LET'SSHOLATBERSAMAAYAH ?
-            </h1>
+              </h1>
+            </div>
             <b-row>
-              <b-col cols="10" offset="1" style="padding-top: 60px;">
+              <b-col cols="12" md="10" offset-md="1" style="padding-top: 60px;">
                 <b-row>
-                  <b-col cols="4" v-for="(logo,index) in logoText" :key="index">
+                  <b-col cols="12" md="4" v-for="(logo,index) in logoText" :key="index">
                     <div class="col-logo">
-                      <b-img class="" :src="logo.image" fluid />
+                      <b-img class="" :src="logo.image" fluid/>
                       <p class="logo-text">{{logo.title}}</p>
                     </div> 
                   </b-col>
@@ -77,11 +88,13 @@
           </b-col>
           <b-col cols="12" class="nopadding">
             <div class="col-orange">
-              <h1 class="title-subhome-big white">KRITERIA PEMENANG CHALLANGE <br> 
-                #LET'SSHOLATBERSAMAAYAH
-              </h1>
-              <b-col cols="8" offset="2">
-                <div>
+              <div class="col-text-about">
+                <h1 class="title-subhome-big white">KRITERIA PEMENANG CHALLANGE <br> 
+                  #LET'SSHOLATBERSAMAAYAH
+                </h1>
+              </div>
+              <b-col cols="12" md="8" offset-md="2">
+                <div class="col-text-about">
                   <ol class="winner-criteria">
                     <li>
                       <strong> Dewan juri akan memilih 5 peserta dengan foto dan cerita terbaik.</strong>
@@ -103,13 +116,15 @@
           <b-col  cols="12" class=""> 
             <b-row>
               <div id="grass" class="background-grass">
-                <h1 class="brown title-subhome-big" style="margin-bottom: 70px;">DAFTARKAN KELUARGA AYAH DAN BUNDA <br> 
+                <div class="col-text-about">
+                  <h1 class="brown title-subhome-big">DAFTARKAN KELUARGA AYAH DAN BUNDA 
                   DENGAN MENGISI FORM DI BAWAH INI!
                 </h1>
-                <b-col cols="10" offset="1">
+                </div>
+                <b-col cols="12" md="10" offset-md="1" style="margin-top: 40px;">
                   <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                     <b-row>
-                      <b-col cols="4">
+                      <b-col cols="12" md="4">
                       <div class="upload-img">
                         <b-form-file v-model="form.image" :state="Boolean(file)" style="display: none;" 
                         ref="inputImage">
@@ -121,7 +136,7 @@
                         </div>
                       </div>
                     </b-col>
-                    <b-col cols="8">
+                    <b-col cols="12" md="8">
                       <b-form-group id="exampleInputGroup1" label-for="exampleInput1">
                         <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.anak" required
                           placeholder="Masukan Nama Anak">
@@ -178,7 +193,7 @@
             </b-row>
           </b-col>
           <bannerlast style="margin-top: -110px;"/>
-          <bootfoot></bootfoot>
+          <bootfoot class="dekstop"></bootfoot>
           <copyright></copyright>
         </b-row>
       </b-container>
@@ -232,7 +247,27 @@ export default {
         speed: 300,
         arrow: false,
         prevArrow: '<img class="slick-prev" src="../../static/left.png">',
-        nextArrow: '<img class="slick-next" src="../../static/right.png">'
+        nextArrow: '<img class="slick-next" src="../../static/right.png">',
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: true,
+              prevArrow: '<img class="slick-prev" src="../../static/left.png">',
+              nextArrow: '<img class="slick-next" src="../../static/right.png">',
+              slidesToShow: 1
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: true,
+              prevArrow: '<img class="slick-prev" src="../../static/left.png">',
+              nextArrow: '<img class="slick-next" src="../../static/right.png">',
+              slidesToShow: 1
+            },
+          }
+        ],
       },
       imgSlide: [
         "assets/4foto.jpeg",
@@ -405,6 +440,7 @@ img.icon-btn-dropdown {
   margin-left: auto;
   margin-right: auto;
   width: 300px;
+  display: block;
 }
 .middle P {
   font-size: 20px;
@@ -453,6 +489,11 @@ img.icon-btn-dropdown {
 .about-text {
   font-size: 20px;
   letter-spacing: 1px;
+}
+.col-text-about {
+  margin: 20px auto 0px;
+  padding: 20px 0px;
+  width: 600px;
 }
 .col-logo {
   padding: 20px;
@@ -516,5 +557,104 @@ ol.winner-criteria li > p {
 .inputText {
   margin: 0px 0px 20px;
   padding: 15px;
+}
+.dekstop {
+  display: block;
+}
+@media screen and (max-width:768px) {
+  .homecls {
+    background-image: url('../assets/homemobile.png');
+    height: 600px;
+    background-size: cover;
+    width: 100%;
+    z-index: 10;
+    display: block;
+    position: relative;
+  }
+  img.icon-btn-dropdown {
+    left: 45%;
+    bottom: 0;
+    transform: translate(-45%, 0%);
+    margin-bottom: 60px;
+    width: 50px;
+  }
+  .title-subhome {
+    font-size: 20px;
+  }
+  .middle {
+    display: none;
+  }
+  .background-img {
+    padding: 0px;
+    height: 350px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .slider {
+    padding: 10px 5px;
+  }
+  .btn-lets > span {
+    color: #ffffff;
+  }
+  .sub-price {
+    background-image: url('../assets/prizemobile.jpg');
+    height: 600px;
+    background-size: 100% 100%;
+    width: 100%;
+    z-index: 10;
+    display: block;
+    position: relative;
+  }
+  .btn-dftr {
+    width: 300px;
+  }
+  .btn-dftr span{
+    font-size: 16px;
+  }
+  .col-text-about {
+    padding: 0px 20px;
+    margin-top: 20px;
+    width: 430px;
+  }
+  .col-text-about h1 {
+    font-size: 25px;
+  }
+  .about-text {
+    font-size: 18px;
+    text-align: center;
+  }
+  ol.winner-criteria {
+  padding: 20px 20px;
+  text-align: left;
+  color: #ffffff;
+  list-style-type: decimal !important;
+  
+}
+ol.winner-criteria li {
+  width: 100%;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 20px 0px;
+}
+ol.winner-criteria li > p {
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px 0px;
+}
+.background-grass {
+  background-image: url('../assets/grass.png');
+  padding: 80px 10px 40px;
+  background-size: cover;
+  height: 1450px;
+  width: 100%;
+  z-index: 10;
+  display: block;
+  position: relative;
+  margin-top: -40px;
+}
+.dekstop {
+  display: none;
+}
 }
 </style>

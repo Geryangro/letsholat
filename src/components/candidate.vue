@@ -10,14 +10,14 @@
         <b-col cols="12">
           <b-row>
             <div id="check" class="find-candidate">
-              <b-col cols="10" offset="1">
+              <b-col cols="12" md="10" offset-md="1">
                 <b-row>
-                  <b-col cols="8">
+                  <b-col cols="8" md="8">
                     <b-form-input class="inputText" id="exampleInput1" type="text" v-model="search"
                             placeholder="Cari Anak">
                     </b-form-input>
                   </b-col>
-                  <b-col cols="4">
+                  <b-col class="nopadding" cols="4" md="4">
                     <b-button class="btn-search">
                       <span>CARI</span>
                     </b-button>
@@ -31,7 +31,7 @@
               </b-col>
             </div>
             <div class="sub-price"></div>
-            <div class="col-orange">
+            <div class="col-orange dekstop">
               <h2 class="title-subhome-big brown">Yuk, didik anak kita agar mencintai sholat <br>
                 Lewat keteladanan para ayah!
               </h2>
@@ -39,7 +39,7 @@
                 <span class="brown">Daftar Sekarang</span>
               </b-button>
             </div>
-            <bootfoot />
+            <bootfoot class="dekstop"/>
             <copyright />
           </b-row>
           
@@ -182,8 +182,50 @@ img.icon-btn-dropdown {
 .btn-white:hover {
   box-shadow: 0px 2px 3px 3px #3F3933;
 }
+.dekstop {
+  display: block;
+}
 .btn-white span {
   font-size: 26px;
   font-family: 'plumpfull';
+}
+@media screen and (max-width: 768px) {
+  .candidatecls {
+    background-image: url('../assets/homemobile.png');
+    height: 600px;
+    background-size: cover;
+    width: 100%;
+    z-index: 10;
+    display: block;
+    position: relative;
+  }
+  img.icon-btn-dropdown {
+    left: 45%;
+    bottom: 0;
+    transform: translate(-45%, 0%);
+    margin-bottom: 60px;
+    width: 50px;
+  }
+  .btn-search {
+    background-color: #F69520;
+    border: none;
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0px 0px 0px;
+    border-bottom: 6px solid #C26F29;
+    width: 120px;
+  }
+  .sub-price {
+    background-image: url('../assets/prizemobile.jpg');
+    height: 600px;
+    background-size: 100% 100%;
+    width: 100%;
+    z-index: 10;
+    display: block;
+    position: relative;
+  }
+  .dekstop {
+    display: none;
+  }
 }
 </style>

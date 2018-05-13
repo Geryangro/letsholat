@@ -2,8 +2,7 @@
   <div id="login" class="login">
     <b-container fluid>
       <b-row>
-        <b-col cols="4" offset="8">
-          
+        <b-col cols="12" md="4" offset-md="8">    
           <div class="background-white">
           <b-row>
             <div class="middle">
@@ -52,7 +51,6 @@ export default {
     width: 100%;
 }
 .background-white {
-  min-height: 100%;  
   min-height: 100vh; 
   display: flex;
   align-items: center;
@@ -88,5 +86,38 @@ export default {
 }
 span.title-btn {
   margin-left: 5px;
-}  
+}
+@media screen and (max-width:768px) {
+  #login {
+      background-image: url('../assets/bannerlogin.jpg');
+      height: 662px;
+      background-size: cover;
+      width: 100%;
+      position: relative;
+  }
+  .background-white {
+    min-height: 0px;
+    display: block;
+    align-items: center;
+    margin-top: 350px;
+  }
+  .middle {
+    margin-right: 10px;
+  }
+  .middle P {
+    font-size: 14px;
+  }
+  .btn-fb {
+    margin-top: 20px;
+    float: right;
+    background-color: #495B95;
+    border-radius: 6px;
+    border: none;
+    padding: 10px 20px;
+  }
+  span.title-btn {
+  margin-left: 5px;
+  font-size: 14px;
+}
+}
 </style>

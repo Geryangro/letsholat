@@ -1,5 +1,6 @@
 <template>
   <div id="pag-entry" class="pag-entry">
+    <b-container fluid>
       <b-row>
         <b-col cols="12" offset="">
           <b-row>
@@ -16,6 +17,8 @@
         </b-col>
         
       </b-row>
+    </b-container>
+      
   </div>
 </template>
 
@@ -38,7 +41,7 @@ export default {
   data () {
     return {
       currentPage: 0,
-      nbp: 9,
+      nbp: 6,
       pages:[],
       pageGen: 0,
       numPages: 0,

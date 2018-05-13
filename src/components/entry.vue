@@ -1,5 +1,5 @@
 <template>
-    <b-col cols="4">
+    <b-col cols="6" md="4" class="nopadding">
         <div id="entry" class="entry">
         <b-container fluid>
             <b-row>
@@ -76,5 +76,10 @@ export default {
     float: right;
     font-size: 20px;
     margin-bottom: 0px;
+}
+@media screen and (max-width:768px) {
+    #entry {
+    padding: 10px 0px;
+}
 }
 </style>
