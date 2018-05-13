@@ -179,9 +179,11 @@
           </b-col>
           <b-col cols="12" class="nopadding">
             <b-img style="margin-top: -110px;" :src="require('../assets/bannerlast.jpg')" fluid/>
-            <b-button class="btn-dftr" style="margin-top: -200px;">
-              <span class="white">DAPATKAN DISINI</span>
-            </b-button>
+            <router-link to="/candidate">
+              <b-button class="btn-dftr" style="margin-top: -200px;">
+                <span class="white">DAPATKAN DISINI</span>
+              </b-button>
+            </router-link>
           </b-col>
           <bootfoot></bootfoot>
           <copyright></copyright>
@@ -327,27 +329,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@font-face {
-  font-family: 'roboto';
-  src: url('../../static/font/roboto.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'plumpfull';
-  src: url('../../static/font/plumpfull.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-.green {
-  color: #5D6937;
-}
-.white {
-  color: #ffffff;
-}
-.brown {
-  color: #3F3933;
-}
+
 h1, h2 {
   font-weight: normal;
 }
