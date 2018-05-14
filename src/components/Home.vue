@@ -26,18 +26,18 @@
                     <p>
                     Berikut ini <br>
                     beberapa kisah <br>
-                    <strong>#Lets'SholatBer<br>samaAyah</strong> 
+                    <strong>#Lets'SholatBer<br>samaAyah</strong>
                     yang telah <br> menjadi inspirasi <br>
                     banyak keluarga <br>
                     </p>
                     <router-link to="/">
                       <b-button class="btn-lets">
-                        <span>klik disini</span>  
+                        <span>klik disini</span>
                       </b-button>
                     </router-link>
                   </div>
-                </b-col> 
-              </b-row> 
+                </b-col>
+              </b-row>
             </div>
           </b-col>
           <b-col cols="12" class="nopadding">
@@ -48,7 +48,7 @@
             <h1 class="title-subhome-big green" style="margin-top: 80px;">TENTANG #LET'SSHOLATBERSAMAAYAH</h1>
             <p class="about-text" style="margin-bottom: 40px;">
               Ayo buat pendidikan sholat untuk anak jadi makin berkesan dengan <br>
-              mengikuti Challange berupa Photo Contest dengan tema "Let's Sholat <br> 
+              mengikuti Challange berupa Photo Contest dengan tema "Let's Sholat <br>
               Bersama Ayah" Mari bersama-sama kita tumbuhkan generasi penerus <br>
               menjadi orang-orang yang mencintai sholat!
             </p>
@@ -88,7 +88,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 export default {
   name: 'Home',
-  components: { 
+  components: {
     "slick": slick,
   },
   data () {
@@ -127,7 +127,7 @@ export default {
         var element = document.querySelector('#'+refName);
         var rect = element.getBoundingClientRect();
         $('html, body').animate(
-            {scrollTop: rect.top}, 
+            {scrollTop: rect.top},
         1000);
     },
     next() {

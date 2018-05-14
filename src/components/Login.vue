@@ -3,7 +3,7 @@
     <b-container fluid>
       <b-row>
         <b-col cols="4" offset="8">
-          
+
           <div class="background-white">
           <b-row>
             <div class="middle">
@@ -17,14 +17,14 @@
             </div>
             <div class="clearfix"></div>
             <b-col cols="12">
-              <router-link to="/home">
+              <a  @click="auth()">
                 <b-button class="btn-fb">
                   <b-img :src="require('../assets/iconfb.png')"/>
                   <span class="title-btn">masuk dengan facebook</span>
                 </b-button>
-              </router-link>
+              </a>
             </b-col>
-          </b-row>  
+          </b-row>
           </div>
         </b-col>
       </b-row>
@@ -33,12 +33,26 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
   name: 'login',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  methods:{
+      auth(){
+          axios.get('http://localhost:8000/api/login/facebook')
+            .then(response => {
+              // JSON responses are automatically parsed.
+              console.log(response);
+              window.location = response.data.result.redirect_url
+            })
+            .catch(e => {
+              this.errors.push(e)
+         })
+      }
   }
 }
 </script>
@@ -52,8 +66,8 @@ export default {
     width: 100%;
 }
 .background-white {
-  min-height: 100%;  
-  min-height: 100vh; 
+  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
 }
@@ -88,5 +102,5 @@ export default {
 }
 span.title-btn {
   margin-left: 5px;
-}  
+}
 </style>
