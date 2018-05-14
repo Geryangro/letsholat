@@ -5,6 +5,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
 
   name: 'AuthFacebookCallback',
@@ -17,12 +18,12 @@ export default {
       auth: function(){
           var code = this.$route.query.code;
           var urlAuthHandler = 'http://localhost:8000/api/login/facebook/callback?code='+code;
-          console.log(urlAuthHandler);
           axios.get(urlAuthHandler)
             .then(response => {
               // JSON responses are automatically parsed.
-              console.log(response)
-              this.posts = response.data
+              var loggedUser = response.data.result.user;
+              localStorage.setItem('user', JSON.stringify(loggedUser));
+              this.$router.push({path: '/home'});
             })
             .catch(e => {
                 console.log(e);

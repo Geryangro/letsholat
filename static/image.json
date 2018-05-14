@@ -1,0 +1,87 @@
+{
+   "status":"ok",
+   "result":{
+      "data":[
+         {
+            "title":"Muslim",
+            "image":"static/image/4foto.jpeg",
+            "point": "15"
+         },
+         {
+            "title":"aiya",
+            "image":"static/image/4foto.jpeg",
+            "point": "11"
+         },
+         {
+            "title":"luqman",
+            "image":"static/image/4foto.jpeg",
+            "point": "4"
+         },
+         {
+            "title":"aiya",
+            "image":"static/image/4foto.jpeg",
+            "point": "3"
+         },
+         {
+            "title":"herdy",
+            "image":"static/image/4foto.jpeg",
+            "point": "7"
+         },
+         {
+            "title":"pandhu",
+            "image":"static/image/4foto.jpeg",
+            "point": "9"
+         },
+         {
+            "title":"alwin",
+            "image":"static/image/4foto.jpeg",
+            "point": "2"
+         },
+         {
+            "title":"gp",
+            "image":"static/image/4foto.jpeg",
+            "point": "8"
+         },
+         {
+            "title":"dama",
+            "image":"static/image/4foto.jpeg",
+            "point": "15"
+         },
+         {
+            "title":"luqman",
+            "image":"static/image/4foto.jpeg",
+            "point": "4"
+         },
+         {
+            "title":"aiya",
+            "image":"static/image/4foto.jpeg",
+            "point": "3"
+         },
+         {
+            "title":"herdy",
+            "image":"static/image/4foto.jpeg",
+            "point": "7"
+         },
+         {
+            "title":"pandhu",
+            "image":"static/image/4foto.jpeg",
+            "point": "9"
+         },
+         {
+            "title":"alwin",
+            "image":"static/image/4foto.jpeg",
+            "point": "2"
+         },
+         {
+            "title":"gp",
+            "image":"static/image/4foto.jpeg",
+            "point": "8"
+         },
+         {
+            "title":"dama",
+            "image":"static/image/4foto.jpeg",
+            "point": "15"
+         }
+      ]
+   }
+}

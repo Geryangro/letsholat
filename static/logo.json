@@ -3,16 +3,40 @@
    "result":{
       "data":[
          {
-            "title":"satu",
-            "image":"static/logo1.png"
+            "title":"Muslim",
+            "image":"static/logo/logo1.png"
          },
          {
-            "title":"dua",
-            "image":"static/logo1.png"
+            "title":"Usia anak 1-10 tahun terhitung Mei 2018",
+            "image":"static/logo/logo2.png"
          },
          {
-            "title":"tiga",
-            "image":"static/logo1.png"
+            "title":"Follow instagram @letssholatbersamaayah",
+            "image":"static/logo/logo3.png"
+         },
+         {
+            "title":"Foto pribadi dan sedang tidak mengikuti foto kontes yang lain",
+            "image":"static/logo/logo4.png"
+         },
+         {
+            "title":"Penilaian berdasarkan momen foto dan juga kisah",
+            "image":"static/logo/logo5.png"
+         },
+         {
+            "title":"Challenge dapat diikuti pada tanggal 14 Mei - 30 Juni 2018",
+            "image":"static/logo/logo6.png"
+         },
+         {
+            "title":"Keputusan pemenang tidak bisa diganggu gugat",
+            "image":"static/logo/logo7.png"
+         },
+         {
+            "title":"Follow fanpage facebook Lets sholat bersama ayah",
+            "image":"static/logo/logo8.png"
+         },
+         {
+            "title":"Menggunakan produk Afrakids menjadi nilai ++",
+            "image":"static/logo/logo9.png"
          }
       ]
    }
