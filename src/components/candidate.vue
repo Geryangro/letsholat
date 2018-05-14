@@ -65,7 +65,7 @@ export default {
   data () {
     return {
       search: '',
-      entrys: [],
+      entrys : []
     }
   },
   created: function(){
@@ -81,9 +81,11 @@ export default {
     },
     loadEntry: function() {
         var self = this;
-        axios.get('/static/image.json')
+        let url = this.apiUrl+'index.php/api/participants';
+        axios.get(url)
         .then(function (response){
-          self.entrys = response.data.result.data;
+          console.log(response);
+          self.entrys = response.data.result.participants;
         })
         .catch(function (error){
           self.entrys = 'error dude' + error;

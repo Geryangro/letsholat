@@ -1,7 +1,7 @@
 <template>
   <div id="profile" class="profile">
         <b-container fluid>
-            <b-row>
+            <b-row v-if="profile">
                 <b-col cols="12">
                     <div class="col-profile">
                         <b-col cols="8" offset="2">
@@ -12,11 +12,12 @@
                         </b-col>
                         <b-col cols="12" md="6" offset-md="3">
                                 <div class="profile-pict">
-                                <b-img class="profile-pict-element" :src="require('../assets/5foto.jpeg')" fluid/>
+                                <b-img class="profile-pict-element" :src="'http://api.letsshalat.local/uploads/'+profile.url_img+'.jpg'" fluid/>
                                 <div class="profile-pict_story">
+                                    <strong>{{profile.child_name}}, {{profile.age}} tahun</strong>
                                     <p>
-                                        Syaime Adelia, 3 tahun. Halo pekenalkan <br>
-                                        nama saya Syaima Ayah sering mengajak ku pergi ke masjid dan bermain petasaan.
+                                        Halo pekenalkan nama saya {{profile.child_name}}<br>
+                                        {{profile.descriptions}}
                                     </p>
                                 </div>
                                 <b-button class="btn-dftr">
@@ -35,7 +36,7 @@
                                 data-share="true"
                                 data-show-faces="true">
                                 </div>
-                                <h3 class="title-subhome-big black">POPULARITY: 30</h3>
+                                <h3 class="title-subhome-big black">POPULARITY: {{profile.point}}</h3>
                             </div>
                             </b-col>
                     </div>
@@ -52,6 +53,7 @@
 import bannerlast from '@/components/bannerlast'
 import bootfoot from '@/components/footer'
 import copyright from '@/components/copyright'
+import axios from 'axios'
 
 export default {
   name: 'profile',
@@ -61,12 +63,24 @@ export default {
       copyright
   },
   created: function(){
+      let id = this.$route.params.url;
+      axios.get('http://api.letsshalat.local/index.php/api/participant/'+id)
+      .then(response =>{
+        let participant = response.data.result.participant
+        this.$set(this, 'profile', participant);
+      })
+      .catch(e => {
+
+      })
       this.$store.dispatch('FB_Parse')
   },
   data () {
     return {
-        
+        profile: {},
     }
+  },
+  watch:{
+      
   }
 }
 </script>

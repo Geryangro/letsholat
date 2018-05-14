@@ -17,6 +17,18 @@ Vue.use(mediaQueries);
 Vue.use(VueYouTubeEmbed);
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.mixin({
+  data: function() {
+    return {
+      get mainUrl() {
+        return "http://localhost:8080/";
+      },
+      get apiUrl() {
+        return "http://api.letsshalat.local/";
+      }
+    }
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

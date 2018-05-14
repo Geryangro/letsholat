@@ -42,7 +42,8 @@ export default {
   },
   methods:{
       auth(){
-          axios.get('http://localhost:8000/api/login/facebook')
+          let url = 'http://api.letsshalat.local/index.php/api/login/facebook';
+          axios.get(url)
             .then(response => {
               // JSON responses are automatically parsed.
               console.log(response);
@@ -56,7 +57,7 @@ export default {
   created(){
     var userString = localStorage.getItem('user');
     if(userString){
-      this.$router.push({path: '/home'});
+      //this.$router.push({path: '/home'});
     }    
   }
 }

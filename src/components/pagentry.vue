@@ -4,7 +4,7 @@
       <b-row>
         <b-col cols="12" offset="">
           <b-row>
-            <entry v-for="(entry, index) in pages[currentPage-1]" :key="index" :entry="entry"/>
+            <entry v-for="(entry, index) in pages[currentPage-1]" :key="index" :id="entry.url"/>
           </b-row>
           <b-pagination
               align="center"
@@ -34,7 +34,7 @@ export default {
   props: ['entrys'],
   watch: {
     entrys: function(val) {
-      this.entrys = val;
+      this.entries = val;
       this.loadDataEntry();
     }
   },
@@ -45,6 +45,7 @@ export default {
       pages:[],
       pageGen: 0,
       numPages: 0,
+      entries: []
     }
   },
   created: function(){
@@ -52,7 +53,7 @@ export default {
   },
   methods: {
     loadDataEntry: function() {
-      this.pages =  this.loadDataToPages(this.entrys, this.nbp);
+      this.pages =  this.loadDataToPages(this.entries, this.nbp);
       this.numPages = this.pages.length-1;
     },
     loadDataToPages: function(data, elementPerPage){

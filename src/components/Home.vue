@@ -113,7 +113,7 @@
               </b-col>
             </div>
           </b-col>
-          <b-col  cols="12" class=""> 
+          <b-col  cols="12" class="" v-if="!isRegistered"> 
             <b-row>
               <div id="grass" class="background-grass">
                 <div class="col-text-about">
@@ -156,7 +156,8 @@ export default {
   },
   data () {
     return {
-      
+      isRegistered: false,
+      user: null,
       show: true,
       types: [
         'Nama',
@@ -207,9 +208,18 @@ export default {
   watch: {
     logoText: function(val){
       this.logoText = val;
+    },
+    user: function(val){
+      this.fetchProfile();
+      
     }
   },
   created: function(){
+    let user = this.getUser();
+    if(!user){
+      this.$router.push({path: '/'});
+    }
+    this.user = user;
     this.loadData();
   },
   methods: {
@@ -257,7 +267,20 @@ export default {
       this.videoId = this.$youtube.getIdFromURL(url);
       this.startTime = this.$youtube.getTimeFromURL(url);
     },
-    
+    getUser(){
+      return JSON.parse(localStorage.getItem('user'));  
+    },
+    fetchProfile(){
+      let url = 'http://api.letsshalat.local/index.php/api/participant/'+this.user.fb_id
+      axios(url).then(response =>{
+        let participant = response.data.result.participant;
+        if(participant){
+          this.$set(this, 'isRegistered', true);
+        }
+      }).catch(e => {
+
+      });
+    }    
   },
   mounted: function() {
     

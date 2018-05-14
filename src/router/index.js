@@ -28,7 +28,7 @@ export default new Router({
       component: Candidate
     },
     {
-      path: '/profile',
+      path: '/profile/:url',
       name: 'Profile Peserta',
       component: Profile
     },

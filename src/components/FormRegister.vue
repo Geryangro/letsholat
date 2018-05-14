@@ -23,16 +23,16 @@
       </b-col>
       <b-col cols="12" md="8">
         <b-form-group id="exampleInputGroup1" label-for="exampleInput1">
-          <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.anak" required
+          <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.child_name" required
             placeholder="Masukan Nama Anak">
           </b-form-input>
-          <b-form-input class="inputText" id="exampleInput1" type="number" v-model="form.usia" required
+          <b-form-input class="inputText" id="exampleInput1" type="number" v-model="form.age" required
             placeholder="Masukan Usia Anak">
           </b-form-input>
-          <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.ayah" required
+          <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.father_name" required
             placeholder="Masukan Nama Ayah">
           </b-form-input>
-          <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.bunda" required
+          <b-form-input class="inputText" id="exampleInput1" type="text" v-model="form.mother_name" required
             placeholder="Masukan Nama Bunda">
           </b-form-input>
         </b-form-group>
@@ -41,26 +41,26 @@
         <b-form-group>
           <b-row>
             <b-col cols="6">
-              <b-form-input class="inputText" id="exampleInput1" type="email" v-model="form.email" required
+              <b-form-input class="inputText" id="exampleInput1" type="email" v-model="form.parent_email" required
               placeholder="Masukan Email Ayah/Bunda">
               </b-form-input>
             </b-col>
             <b-col cols="6">
-              <b-form-input class="inputText" id="exampleInput1" type="number" v-model="form.nohp" required
+              <b-form-input class="inputText" id="exampleInput1" type="number" v-model="form.parent_handphone" required
               placeholder="No.Handphone">
             </b-form-input>
             </b-col>
           </b-row>                       
           <b-form-textarea id="textarea1"
             class="inputText"
-            v-model="form.alamat"
+            v-model="form.parent_address"
             placeholder="Alamat"
             :rows="3"
             :max-rows="6">
           </b-form-textarea>
           <b-form-textarea id="textarea1"
             class="inputText"
-            v-model="form.kisah"
+            v-model="form.descriptions  "
             placeholder="Kisah sholat bersama anakku"
             :rows="3"
             :max-rows="6">
@@ -69,7 +69,7 @@
         
       </b-col>
       </b-row>
-      <b-button class="btn-dftr">
+      <b-button type="submit" class="btn-dftr">
         <span class="white">DAFTAR</span>
       </b-button>
     </b-form>
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
   name: 'FormRegister',
   data () {
@@ -86,22 +87,21 @@ export default {
       file: null,
       form: {
         image: '',
-        anak: '',
-        usia: '',
-        ayah: '',
-        bunda: '', 
-        nohp: '',
-        email: '',
-        alamat: '',
-        kisah: ''
+        child_name: '',
+        age: '',
+        father_name: '',
+        mother_name: '', 
+        parent_handphone: '',
+        parent_email: '',
+        parent_address: '',
+        descriptions: ''
       },
-      msg: 'Welcome to Your Vue.js App'
     }
   },
   methods: {
     onSubmit (evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      this.submitForm();
     },
     onReset (evt) {
       evt.preventDefault();
@@ -134,8 +134,29 @@ export default {
     },
     removeImage: function (e) {
         this.form.image= '';
-    }
+    },
+    submitForm: function(){
+      let user = JSON.parse(localStorage.getItem('user'));
+      this.form.access_token = user.access_token;
+        this.$set(this, 'loading',true);
+        let config = {
+            headers: { 
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+        }
+        let uri = 'http://api.letsshalat.local/index.php/api/register';
+        axios.post(uri, this.form).then((response) => {
+            console.log(response);
+            let participant = response.data.result.participant;
+            this.$router.push({path: '/profile/'+participant.url});
 
+        }).catch(e => {
+             console.log(e);
+         })
+    },
+  
   }
 }
 </script>
