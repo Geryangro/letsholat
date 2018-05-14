@@ -35,4 +35,9 @@ p {
     margin:0px auto;
     font-size: 14px;
 }
+@media screen and (max-width: 450px) {
+  p {
+    font-size: 12px;
+  }
+}
 </style>

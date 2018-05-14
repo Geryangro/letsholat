@@ -1,10 +1,10 @@
 <template>
     <b-col id="bannerlast" cols="12" class="nopadding">
-            <router-link to="">
+            <a href="http://bazarafra.com/afrakids">
               <b-button class="btn-dftr" style="">
                 <span class="white">DAPATKAN DISINI</span>
               </b-button>
-            </router-link>
+            </a>
     </b-col>
 </template>
 

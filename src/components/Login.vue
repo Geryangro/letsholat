@@ -7,18 +7,16 @@
           <b-row>
             <div class="middle">
               <p>
-                  Yuk buat moment sholat jadi <br>
-                  menyenangkan! ikutan <br>
-                  <strong>
-                    #Let'sSholatBersamaAyah!
-                  </strong>
+                  Yuk buat moment sholat jadi 
+                  menyenangkan! ikutan 
+                  #Let'sSholatBersamaAyah!
                 </p>
             </div>
             <div class="clearfix"></div>
             <b-col cols="12">
               <a  @click="auth()">
                 <b-button class="btn-fb">
-                  <b-img :src="require('../assets/iconfb.png')"/>
+                  <b-img class="iconfb" :src="require('../assets/iconfb.png')"/>
                   <span class="title-btn">masuk dengan facebook</span>
                 </b-button>
               </a>
@@ -82,6 +80,7 @@ export default {
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
+  width: 340px;
 }
 .middle P {
   font-size: 20px;
@@ -111,8 +110,8 @@ span.title-btn {
 @media screen and (max-width:768px) {
   #login {
       background-image: url('../assets/bannerlogin.jpg');
-      height: 662px;
-      background-size: cover;
+      height: 525px;
+      background-size: 100% 100%;
       width: 100%;
       position: relative;
   }
@@ -120,13 +119,17 @@ span.title-btn {
     min-height: 0px;
     display: block;
     align-items: center;
-    margin-top: 350px;
+    margin-top: 280px;
   }
   .middle {
-    margin-right: 10px;
+    margin-right: 20px;
+    padding: 10px;
+    width: 190px;
   }
   .middle P {
     font-size: 14px;
+    
+    margin-bottom: 0px;
   }
   .btn-fb {
     margin-top: 20px;
@@ -134,11 +137,14 @@ span.title-btn {
     background-color: #495B95;
     border-radius: 6px;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
   }
   span.title-btn {
   margin-left: 5px;
   font-size: 14px;
+}
+.iconfb {
+  width: 17px;
 }
 }
 </style>

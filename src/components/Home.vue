@@ -21,8 +21,11 @@
                         <b-img class="background-img" :src="require('../'+img)" fluid />
                       </div>
                     </slick>
-                    <p>lihat kisah #let'sSholatBersamaAyah lainnya</p>
+                    <div class="phone">
+                      <p>lihat kisah #let'sSholatBersamaAyah lainnya</p>
                       <router-link to="/candidate"><button class="btn-lets"><span>klik disini</span></button></router-link>
+                    </div>
+                    
                   </div>
                 </b-col>
                 <b-col cols="12" md="4">
@@ -49,7 +52,7 @@
             <b-button @click="goto('grass')" class="btn-dftr">
               <span class="white">DAFTAR SEKARANG</span>
             </b-button>
-            <div class="col-text-about">
+            <b-col cols="12" class="col-text-about">
               <h1 class="title-subhome-big green">TENTANG #LET'SSHOLATBERSAMAAYAH</h1>
               <p class="about-text">
                 Ayo buat pendidikan sholat untuk anak jadi makin berkesan dengan 
@@ -57,22 +60,22 @@
                 Bersama Ayah" Mari bersama-sama kita tumbuhkan generasi penerus 
                 menjadi orang-orang yang mencintai sholat!
               </p>
-            </div>
+            </b-col>
           </b-col>
           <b-col>
             <div v-if="$resize && $mq.above(992)">
               <youtube :video-id="videoId" player-width="800" player-height="400" :player-vars="{autoplay: 0}"></youtube>
             </div>
             <div v-else>
-              <youtube :video-id="videoId" player-width="400" player-height="300" :player-vars="{autoplay: 0}"></youtube>
+              <youtube :video-id="videoId" player-width="300" player-height="200" :player-vars="{autoplay: 0}"></youtube>
             </div>
           </b-col>
           <b-col cols="12">
-            <div class="col-text-about">
+            <b-col class="col-text-about">
               <h1 class="title-subhome-big green">APA SAJA SYARAT MENGIKUTI <br>
               #LET'SSHOLATBERSAMAAYAH ?
               </h1>
-            </div>
+            </b-col>
             <b-row>
               <b-col cols="12" md="10" offset-md="1" style="padding-top: 60px;">
                 <b-row>
@@ -88,13 +91,13 @@
           </b-col>
           <b-col cols="12" class="nopadding">
             <div class="col-orange">
-              <div class="col-text-about">
+              <b-col class="col-text-about">
                 <h1 class="title-subhome-big white">KRITERIA PEMENANG CHALLANGE <br> 
                   #LET'SSHOLATBERSAMAAYAH
                 </h1>
-              </div>
+              </b-col>
               <b-col cols="12" md="8" offset-md="2">
-                <div class="col-text-about">
+                <b-col class="col-text-about">
                   <ol class="winner-criteria">
                     <li>
                       <strong> Dewan juri akan memilih 5 peserta dengan foto dan cerita terbaik.</strong>
@@ -109,18 +112,18 @@
                       <strong> 1 pemenang favorit dinilai dari like terbanyak.</strong>
                     </li>
                   </ol>
-                </div>
+                </b-col>
               </b-col>
             </div>
           </b-col>
           <b-col  cols="12" class="" v-if="!isRegistered"> 
             <b-row>
               <div id="grass" class="background-grass">
-                <div class="col-text-about">
+                <b-col class="col-text-about">
                   <h1 class="brown title-subhome-big">DAFTARKAN KELUARGA AYAH DAN BUNDA 
                   DENGAN MENGISI FORM DI BAWAH INI!
                 </h1>
-                </div>
+                </b-col>
                 <b-col cols="12" md="10" offset-md="1" style="margin-top: 40px;">
                   <form-register></form-register>
                 </b-col>
@@ -202,7 +205,7 @@ export default {
         "assets/5foto.jpeg",
       ],
       logoText: [],
-      videoId: '_7ouPGxu0OE',
+      videoId: 'nc-6T0nWrGc',
     }
   },
   watch: {
@@ -492,11 +495,14 @@ ol.winner-criteria li > p {
 .dekstop {
   display: block;
 }
+.phone {
+  display: none;
+}
 @media screen and (max-width:768px) {
   .homecls {
     background-image: url('../assets/homemobile.png');
-    height: 600px;
-    background-size: cover;
+    height: 450px;
+    background-size: 100% 100%;
     width: 100%;
     z-index: 10;
     display: block;
@@ -507,17 +513,23 @@ ol.winner-criteria li > p {
     bottom: 0;
     transform: translate(-45%, 0%);
     margin-bottom: 60px;
-    width: 50px;
+    width: 40px;
+  }
+  .sub-homecls {
+    height: 660px;
   }
   .title-subhome {
-    font-size: 20px;
+    font-size: 16px;
+  }
+  .title-subhome-big {
+    font-size: 25px;
   }
   .middle {
     display: none;
   }
   .background-img {
     padding: 0px;
-    height: 350px;
+    height: 300px;
     width: 100%;
     border-radius: 10px;
   }
@@ -529,7 +541,7 @@ ol.winner-criteria li > p {
   }
   .sub-price {
     background-image: url('../assets/prizemobile.jpg');
-    height: 600px;
+    height: 450px;
     background-size: 100% 100%;
     width: 100%;
     z-index: 10;
@@ -538,20 +550,21 @@ ol.winner-criteria li > p {
   }
   .btn-dftr {
     width: 300px;
+    margin-top: 20px;
   }
   .btn-dftr span{
     font-size: 16px;
   }
   .col-text-about {
-    padding: 0px 20px;
+    padding: 0px 10px;
     margin-top: 20px;
     width: 430px;
   }
   .col-text-about h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
   .about-text {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
   }
   ol.winner-criteria {
@@ -586,6 +599,9 @@ ol.winner-criteria li > p {
 }
 .dekstop {
   display: none;
+}
+.phone {
+  display: block;
 }
 }
 </style>

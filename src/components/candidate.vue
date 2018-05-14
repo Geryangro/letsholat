@@ -194,8 +194,8 @@ img.icon-btn-dropdown {
 @media screen and (max-width: 768px) {
   .candidatecls {
     background-image: url('../assets/homemobile.png');
-    height: 600px;
-    background-size: cover;
+    height: 450px;
+    background-size: 100% 100%;
     width: 100%;
     z-index: 10;
     display: block;
@@ -215,11 +215,11 @@ img.icon-btn-dropdown {
     padding: 4px 20px;
     margin: 0px 0px 0px;
     border-bottom: 6px solid #C26F29;
-    width: 120px;
+    width: 100px;
   }
   .sub-price {
     background-image: url('../assets/prizemobile.jpg');
-    height: 600px;
+    height: 500px;
     background-size: 100% 100%;
     width: 100%;
     z-index: 10;

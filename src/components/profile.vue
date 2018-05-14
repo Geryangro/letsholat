@@ -4,11 +4,9 @@
             <b-row v-if="profile">
                 <b-col cols="12">
                     <div class="col-profile">
-                        <b-col cols="8" offset="2">
+                        <b-col cols="10" offset="1">
                             <b-img class="logo" :src="require('../assets/logolets1.png')" fluid/>
                             <b-img :src="require('../assets/textlogo.png')" fluid/>
-                            
-                            
                         </b-col>
                         <b-col cols="12" md="6" offset-md="3">
                                 <div class="profile-pict">
@@ -153,12 +151,12 @@ img.logo {
         margin: 30px 0px 40px;
         border-radius: 15px;
         box-shadow: 2px 2px 10px 3px #CECFD1;
-        width: 300px;
+        width: 250px;
     }
     .profile-pict_story {
-        padding: 30px;
+        padding: 30px 10px;
         background-color: #E9EDF0;
-        width: 300px;
+        width: 250px;
         margin: 10px auto 30px;
         border-radius: 15px;
         text-align: justify;
@@ -170,7 +168,7 @@ img.logo {
         padding: 8px 20px;
         margin-bottom: 20px;
         border-bottom: 6px solid #C26F29;
-        width: 300px;
+        width: 250px;
     }
     .dekstop {
         display: none;

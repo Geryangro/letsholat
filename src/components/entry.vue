@@ -8,7 +8,7 @@
                     <div class="col-desc">
                         <b-img class="img-entry" :src="apiUrl+'../uploads/'+entryComp.url_img+'.jpg'" fluid />
                         <div class="description">
-                            <p>{{entryComp.child_name}}, {{entryComp.age}} Tahun</p>
+                            <p class="text-bio">{{entryComp.child_name}}, {{entryComp.age}} Tahun</p>
                             <b-img :src="require('../assets/star.png')" fluid/>
                             <p class="point">{{entryComp.point}}</p>
                         </div>
@@ -76,7 +76,7 @@ export default {
     border-radius: 10px 10px 0px 0px;
 }
 .col-desc {
-
+    background-color: #ffffff;
 }
 .description {
     background-color: #ffffff;
@@ -102,6 +102,15 @@ export default {
 @media screen and (max-width:768px) {
     #entry {
     padding: 10px 0px;
+}
+.col-desc {
+ padding-top: 20px;
+ border-radius: 10px 10px 10px 10px;
+}
+.description p {
+    float: left;
+    font-size: 16px;
+    margin-bottom: 0px;
 }
 }
 </style>

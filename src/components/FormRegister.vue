@@ -411,6 +411,7 @@ ol.winner-criteria li > p {
   }
   .btn-dftr {
     width: 300px;
+    margin-top: 20px;
   }
   .btn-dftr span{
     font-size: 16px;
