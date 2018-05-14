@@ -24,7 +24,7 @@ Vue.mixin({
         return "http://letssholat.com/";
       },
       get apiUrl() {
-        return "http://endpoint.letssholat.com/";
+        return "http://endpoint.letssholat.bazarafra.com/index.php/";
       }
     }
   }

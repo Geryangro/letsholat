@@ -12,7 +12,7 @@
                         </b-col>
                         <b-col cols="12" md="6" offset-md="3">
                                 <div class="profile-pict">
-                                <b-img class="profile-pict-element" :src="'http://api.letsshalat.local/uploads/'+profile.url_img+'.jpg'" fluid/>
+                                <b-img class="profile-pict-element" :src="apiUrl+'../uploads/'+profile.url_img+'.jpg'" fluid/>
                                 <div class="profile-pict_story">
                                     <strong>{{profile.child_name}}, {{profile.age}} tahun</strong>
                                     <p>

@@ -42,11 +42,11 @@ export default {
   },
   methods:{
       auth(){
-          let url = this.apiUrl+'api/login/facebook';
+          let url = this.apiUrl+'api/login/facebook?redirect='+this.mainUrl+'auth/facebook/callback';
+          console.log(url);
           axios.get(url)
             .then(response => {
               // JSON responses are automatically parsed.
-              console.log(response);
               window.location = response.data.result.redirect_url
             })
             .catch(e => {

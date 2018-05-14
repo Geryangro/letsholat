@@ -6,7 +6,7 @@
             <b-row>
                 <b-col cols="12">
                     <div class="col-desc">
-                        <b-img class="img-entry" :src="apiUrl+'/uploads/'+entryComp.url_img+'.jpg'" fluid />
+                        <b-img class="img-entry" :src="apiUrl+'../uploads/'+entryComp.url_img+'.jpg'" fluid />
                         <div class="description">
                             <p>{{entryComp.child_name}}, {{entryComp.age}} Tahun</p>
                             <b-img :src="require('../assets/star.png')" fluid/>
