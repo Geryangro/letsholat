@@ -81,7 +81,7 @@ export default {
     },
     loadEntry: function() {
         var self = this;
-        let url = this.apiUrl+'index.php/api/participants';
+        let url = this.apiUrl+'api/participants';
         axios.get(url)
         .then(function (response){
           console.log(response);

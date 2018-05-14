@@ -17,7 +17,7 @@ export default {
   methods: {
       auth: function(){
           var code = this.$route.query.code;
-          var urlAuthHandler = this.apiUrl+'index.php/api/login/facebook/callback?code='+code;
+          var urlAuthHandler = this.apiUrl+'api/login/facebook/callback?code='+code;
           axios.get(urlAuthHandler)
             .then(response => {
               // JSON responses are automatically parsed.

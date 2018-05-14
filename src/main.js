@@ -21,10 +21,10 @@ Vue.mixin({
   data: function() {
     return {
       get mainUrl() {
-        return "http://localhost:8080/";
+        return "http://letssholat.com/";
       },
       get apiUrl() {
-        return "http://api.letsshalat.local/";
+        return "http://endpoint.letssholat.com/";
       }
     }
   }

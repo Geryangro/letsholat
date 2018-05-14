@@ -271,7 +271,7 @@ export default {
       return JSON.parse(localStorage.getItem('user'));  
     },
     fetchProfile(){
-      let url = 'http://api.letsshalat.local/index.php/api/participant/'+this.user.fb_id
+      let url = this.apiUrl+'api/participant/'+this.user.fb_id
       axios(url).then(response =>{
         let participant = response.data.result.participant;
         if(participant){

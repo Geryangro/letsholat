@@ -146,7 +146,7 @@ export default {
                 'Content-Type': 'application/x-www-form-urlencoded',
               },
         }
-        let uri = 'http://api.letsshalat.local/index.php/api/register';
+        let uri = this.apiUrl+'api/register';
         axios.post(uri, this.form).then((response) => {
             console.log(response);
             let participant = response.data.result.participant;

@@ -53,7 +53,7 @@ export default {
   
   methods: {
       fetchData(){
-            axios.get(this.apiUrl+'index.php/api/participant/'+this.id)
+            axios.get(this.apiUrl+'api/participant/'+this.id)
             .then(response =>{
                 let participant = response.data.result.participant
                 this.$set(this, 'entryComp', participant);

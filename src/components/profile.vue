@@ -30,7 +30,7 @@
                                     untuk menjadi <strong>Pemenang Favorite!</strong>
                                 </p>
                                 <div class="fb-like" 
-                                data-href="https://www.your-domain.com/your-page.html" 
+                                data-href="mainUrl+'/profile/'+profile.url" 
                                 data-layout="button_count" 
                                 data-size="large"
                                 data-share="true"
@@ -64,7 +64,7 @@ export default {
   },
   created: function(){
       let id = this.$route.params.url;
-      axios.get('http://api.letsshalat.local/index.php/api/participant/'+id)
+      axios.get(this.apiUrl+'api/participant/'+id)
       .then(response =>{
         let participant = response.data.result.participant
         this.$set(this, 'profile', participant);

@@ -42,7 +42,7 @@ export default {
   },
   methods:{
       auth(){
-          let url = 'http://api.letsshalat.local/index.php/api/login/facebook';
+          let url = this.apiUrl+'api/login/facebook';
           axios.get(url)
             .then(response => {
               // JSON responses are automatically parsed.
