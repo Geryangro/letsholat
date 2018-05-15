@@ -28,7 +28,7 @@
                                     untuk menjadi <strong>Pemenang Favorite!</strong>
                                 </p>
                                 <div class="fb-like" 
-                                data-href="mainUrl+'/profile/'+profile.url" 
+                                :data-href="mainUrl+'/profile/'+profile.url" 
                                 data-layout="button_count" 
                                 data-size="large"
                                 data-share="true"
