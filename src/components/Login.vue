@@ -109,17 +109,16 @@ span.title-btn {
 }
 @media screen and (max-width:768px) {
   #login {
-      background-image: url('../assets/bannerlogin.jpg');
-      height: 525px;
+      background-image: url('../assets/Login-01.jpg');
       background-size: 100% 100%;
-      width: 100%;
+      height: 550px;
       position: relative;
   }
   .background-white {
     min-height: 0px;
     display: block;
     align-items: center;
-    margin-top: 280px;
+    margin-top: 265px;
   }
   .middle {
     margin-right: 20px;
