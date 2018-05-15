@@ -10,9 +10,15 @@ import {MediaQueries} from 'vue-media-queries';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import VueGtm from 'vue-gtm'
 
 const mediaQueries = new MediaQueries();
- 
+
+Vue.use(VueGtm, {
+  debug: true, 
+  vueRouter: router,
+})
+
 Vue.use(mediaQueries);
 Vue.use(VueYouTubeEmbed);
 Vue.config.productionTip = false;
