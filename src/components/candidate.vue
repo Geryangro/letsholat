@@ -193,8 +193,8 @@ img.icon-btn-dropdown {
 }
 @media screen and (max-width: 768px) {
   .candidatecls {
-    background-image: url('../assets/homemobile.png');
-    height: 450px;
+    background-image: url('../assets/lets.jpg');
+    height: 565px;
     background-size: 100% 100%;
     width: 100%;
     z-index: 10;
