@@ -37,7 +37,7 @@
                     yang telah <br> menjadi inspirasi <br>
                     banyak keluarga <br>
                     </p>
-                    <router-link to="/">
+                    <router-link to="/candidate">
                       <b-button class="btn-lets">
                         <span>klik disini</span>
                       </b-button>
@@ -500,8 +500,8 @@ ol.winner-criteria li > p {
 }
 @media screen and (max-width:768px) {
   .homecls {
-    background-image: url('../assets/homemobile.png');
-    height: 450px;
+    background-image: url('../assets/lets.jpg');
+    height: 565px;
     background-size: 100% 100%;
     width: 100%;
     z-index: 10;
@@ -516,7 +516,7 @@ ol.winner-criteria li > p {
     width: 40px;
   }
   .sub-homecls {
-    height: 660px;
+    height: 720px;
   }
   .title-subhome {
     font-size: 16px;
@@ -540,8 +540,8 @@ ol.winner-criteria li > p {
     color: #ffffff;
   }
   .sub-price {
-    background-image: url('../assets/prizemobile.jpg');
-    height: 450px;
+    background-image: url('../assets/BannerHadiah.jpg');
+    height: 510px;
     background-size: 100% 100%;
     width: 100%;
     z-index: 10;
