@@ -16,13 +16,14 @@ export default {
   },
   methods: {
       auth: function(){
+          var self = this;
           var code = this.$route.query.code;
           var urlAuthHandler = this.apiUrl+'api/login/facebook/callback?redirect='+this.mainUrl+'auth/facebook/callback&code='+code;
           axios.get(urlAuthHandler)
             .then(response => {
               // JSON responses are automatically parsed.
               var loggedUser = response.data.result.user;
-              localStorage.setItem('user', JSON.stringify(loggedUser));
+              self.$cookie.set('user', JSON.stringify(loggedUser), 1);
               this.$router.push({path: '/home'});
             })
             .catch(e => {

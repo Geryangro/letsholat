@@ -5,7 +5,7 @@
           <b-col cols="12" class="nopadding">
             <div class="nopadding homecls">
               <div class="">
-                <b-img @click="goto('check')" class="icon-btn-dropdown" :src="require('../assets/dropdown.png')" fluid/>
+                <b-img @click="goto('form')" class="icon-btn-dropdown" :src="require('../assets/dropdown.png')" fluid/>
               </div>
             </div>
           </b-col>
@@ -49,7 +49,7 @@
           </b-col>
           <b-col cols="12" class="nopadding">
             <div class="sub-price"></div>
-            <b-button @click="goto('grass')" class="btn-dftr">
+            <b-button @click="goto('form')" class="btn-dftr">
               <span class="white">DAFTAR SEKARANG</span>
             </b-button>
             <b-col cols="12" class="col-text-about">
@@ -236,9 +236,11 @@ export default {
   methods: {
     goto(refName) {
         var element = document.querySelector('#'+refName);
+        console.log(element);
         var rect = element.getBoundingClientRect();
+        console.log(rect);
         $('html, body').animate(
-            {scrollTop: rect.top},
+            {scrollTop: rect.top + window.pageYOffset - 20},
         1000);
     },
     loadData: function() {
@@ -279,7 +281,7 @@ export default {
       this.startTime = this.$youtube.getTimeFromURL(url);
     },
     getUser(){
-      return JSON.parse(localStorage.getItem('user'));  
+      return JSON.parse(this.$cookie.get('user'));  
     },
     fetchProfile(){
       let url = this.apiUrl+'api/participant/'+this.user.fb_id
