@@ -1,5 +1,13 @@
 <template>
   <div id="form">
+    <b-modal id="myModalRef" ref="myModalRef" hide-footer hide-header>
+      <div class="warpModal">
+        <div id="loader" class="loader d-block text-center"></div>
+        <div class="d-block text-center">
+          <p>LOADING</p>
+        </div>
+      </div>
+    </b-modal>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-row>
         <b-col cols="12" md="4">
@@ -78,6 +86,9 @@
 
 <script>
 import axios from "axios"
+import Raven from 'raven-js';
+import RavenVue from 'raven-js/plugins/vue';
+
 export default {
   name: 'FormRegister',
   data () {
@@ -115,7 +126,15 @@ export default {
       this.$nextTick(() => { this.show = true });
     },
     simulateClick(target){
+      
+      // this.$refs.modalMask.style.display = "block";
       target.$el.children[0].click();
+    },
+    showModal () {
+      
+    },
+     hideModal () {
+      this.$refs.myModalRef.hide()
     },
     imageHandler(e) {
         var files = e.target.files || e.dataTransfer.files;
@@ -137,6 +156,7 @@ export default {
     },
     submitForm: function(){
       let user = JSON.parse(localStorage.getItem('user'));
+      this.$refs.myModalRef.show()
       this.form.access_token = user.access_token;
         this.$set(this, 'loading',true);
         let config = {
@@ -151,19 +171,84 @@ export default {
             console.log(response);
             let participant = response.data.result.participant;
             this.$router.push({path: '/profile/'+participant.url});
-
+            Raven.config('https://f5908700f73b486d947dc216c1573759@sentry.io/1208981').install();
         }).catch(e => {
              console.log(e);
          })
     },
-  
-  }
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.warpModal {
+  position: relative;
+  padding: 10px;
+}
+.loader {
+  font-size: 10px;
+  margin: 50px auto;
+  text-indent: -9999em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: #f78;
+  background: -moz-linear-gradient(left, #f78 30%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #f78 30%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #f78 30%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #f78 30%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #f78 30%, rgba(255, 255, 255, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #f78;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.loader:after {
+  background: #ffffff;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 h1, h2 {
   font-weight: normal;
 }
@@ -366,6 +451,10 @@ ol.winner-criteria li > p {
   display: block;
 }
 @media screen and (max-width:768px) {
+  .loader {
+    width: 100px;
+    height: 100px;
+  }
   .homecls {
     background-image: url('../assets/homemobile.png');
     height: 600px;
