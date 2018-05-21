@@ -28,7 +28,7 @@
                                     untuk menjadi <strong>Pemenang Favorite!</strong>
                                 </p>
                                 <div class="fb-like" 
-                                :data-href="mainUrl+'/profile/'+profile.url" 
+                                :data-href="mainUrl+'profile/'+profile.url" 
                                 data-layout="button_count" 
                                 data-size="large"
                                 data-share="true"
@@ -70,7 +70,6 @@ export default {
       .catch(e => {
 
       })
-      this.$store.dispatch('FB_Parse')
   },
   data () {
     return {
@@ -78,7 +77,9 @@ export default {
     }
   },
   watch:{
-      
+    profile: function(){
+        this.$store.dispatch('FB_Parse')
+    }
   }
 }
 </script>

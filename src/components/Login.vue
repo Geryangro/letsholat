@@ -53,7 +53,6 @@ export default {
       }
   }, 
   created(){
-    var userString = localStorage.getItem('user');
     if(userString){
       //this.$router.push({path: '/home'});
     }    
