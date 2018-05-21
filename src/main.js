@@ -10,9 +10,17 @@ import {MediaQueries} from 'vue-media-queries';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import Raven from 'raven-js';
+import RavenVue from 'raven-js/plugins/vue';
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+Raven
+  .config('https://f5908700f73b486d947dc216c1573759@sentry.io/1208981')
+  .addPlugin(RavenVue, Vue)
+  .install();
 
 const mediaQueries = new MediaQueries();
- 
 Vue.use(mediaQueries);
 Vue.use(VueYouTubeEmbed);
 Vue.config.productionTip = false;

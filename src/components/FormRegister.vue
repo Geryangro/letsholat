@@ -4,7 +4,7 @@
       <div class="warpModal">
         <div id="loader" class="loader d-block text-center"></div>
         <div class="d-block text-center">
-          <p>LOADING</p>
+          <p>Sedang mengunggah, mohon tunggu...</p>
         </div>
       </div>
     </b-modal>
@@ -86,8 +86,6 @@
 
 <script>
 import axios from "axios"
-import Raven from 'raven-js';
-import RavenVue from 'raven-js/plugins/vue';
 
 export default {
   name: 'FormRegister',
@@ -171,7 +169,6 @@ export default {
             console.log(response);
             let participant = response.data.result.participant;
             this.$router.push({path: '/profile/'+participant.url});
-            Raven.config('https://f5908700f73b486d947dc216c1573759@sentry.io/1208981').install();
         }).catch(e => {
              console.log(e);
          })

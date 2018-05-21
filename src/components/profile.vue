@@ -70,7 +70,9 @@ export default {
       .catch(e => {
 
       })
-      this.$store.dispatch('FB_Parse')
+  },
+  mounted: function(){
+        this.$store.dispatch('FB_Parse')
   },
   data () {
     return {
@@ -78,7 +80,9 @@ export default {
     }
   },
   watch:{
-      
+    profile: function(){
+        this.$store.dispatch('FB_Parse')
+    }
   }
 }
 </script>
