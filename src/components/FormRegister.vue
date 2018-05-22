@@ -154,7 +154,7 @@ export default {
     },
     submitForm: function(){
       var self = this;
-      let user = JSON.parse(localStorage.getItem('user'));
+      let user = JSON.parse(this.$cookie.get('user'));  
       this.$refs.myModalRef.show()
       this.form.access_token = user.access_token;
         this.$set(this, 'loading',true);

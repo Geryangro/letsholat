@@ -246,9 +246,7 @@ export default {
   methods: {
     goto(refName) {
         var element = document.querySelector('#'+refName);
-        console.log(element);
         var rect = element.getBoundingClientRect();
-        console.log(rect);
         $('html, body').animate(
             {scrollTop: rect.top + window.pageYOffset - 20},
         1000);
