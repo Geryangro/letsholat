@@ -38,6 +38,9 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
+  metaInfo: {
+    title: 'Login Lets Sholat',
+  },
   methods:{
       auth(){
           let url = this.apiUrl+'api/login/facebook?redirect='+this.mainUrl+'auth/facebook/callback';

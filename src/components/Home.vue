@@ -5,7 +5,7 @@
           <b-col cols="12" class="nopadding">
             <div class="nopadding homecls">
               <div class="">
-                <b-img @click="goto('form')" class="icon-btn-dropdown" :src="require('../assets/dropdown.png')" fluid/>
+                <b-img @click="goto('check')" class="icon-btn-dropdown" :src="require('../assets/dropdown.png')" fluid/>
               </div>
             </div>
           </b-col>
@@ -156,6 +156,16 @@ export default {
       copyright,
       bannerlast,
       formRegister
+  },
+  metaInfo: {
+    title: 'Home',
+    meta: [
+      {
+        'property': 'og:title',
+        'content': 'Test title',
+        // 'mplattee': chunk => `${chunk} - My page` //or as string template: '%s - My page'
+      }
+    ]
   },
   data () {
     return {

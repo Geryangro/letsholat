@@ -68,6 +68,9 @@ export default {
       entrys : []
     }
   },
+  metaInfo: {
+    title: 'Kandidat Peserta Lets Sholat',
+  },
   created: function(){
     this.loadEntry();
   },

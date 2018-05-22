@@ -80,6 +80,20 @@ export default {
     profile: function(){
         this.$store.dispatch('FB_Parse')
     }
+  },
+  metaInfo: {
+    title: 'Profile',
+    meta: [
+      {
+        'name': 'og:name',
+        'property': 'og:title',
+        'content': 'test',
+      },
+    //   {
+    //     'property': 'og:image',
+    //     'content': '',
+    //   }
+    ]
   }
 }
 </script>

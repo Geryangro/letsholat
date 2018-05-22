@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Meta from 'vue-meta'
 
 import BootstrapVue from 'bootstrap-vue'
 import {MediaQueries} from 'vue-media-queries';
@@ -15,6 +16,7 @@ import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 import Vuex from 'vuex'
 
+Vue.use(Meta)
 Vue.use(VueGtm, {
   debug: true, 
   vueRouter: router,
@@ -35,7 +37,7 @@ Vue.mixin({
   data: function() {
     return {
       get mainUrl() {
-        return "http://letssholat.com/";
+        return "http://localhost:8080/";
       },
       get apiUrl() {
         return "http://endpoint.letssholat.bazarafra.com/index.php/";
