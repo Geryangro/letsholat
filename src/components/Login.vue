@@ -56,9 +56,7 @@ export default {
       }
   }, 
   created(){
-    if(userString){
-      //this.$router.push({path: '/home'});
-    }    
+  
   }
 }
 </script>
