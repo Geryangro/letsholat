@@ -77,23 +77,20 @@ export default {
     }
   },
   watch:{
-    profile: function(){
+    profile: function(value){
         this.$store.dispatch('FB_Parse')
     }
   },
-  metaInfo: {
-    title: 'Profile',
-    meta: [
-      {
-        'name': 'og:name',
-        'property': 'og:title',
-        'content': 'test',
-      },
-    //   {
-    //     'property': 'og:image',
-    //     'content': '',
-    //   }
-    ]
+  metaInfo () {
+      return {
+          title: this.profile.child_name,
+          meta: [
+              { vmid: 'og:image', name: 'og:image', content: this.apiUrl+'../uploads/'+this.profile.url_img+'.jpg' },
+              { vmid: 'og:title', name: 'og:title', content: this.profile.child_name + ' ' + this.profile.age + ' Tahun' },
+              { vmid: 'og:description', name: 'og:description', content: this.profile.descriptions },
+              
+          ]
+      }
   }
 }
 </script>
