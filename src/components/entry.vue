@@ -39,16 +39,16 @@ export default {
     }
   },
   watch: {
-      entry: function(val){
-          this.entryComp = val;
+      id: function(val){
+          this.fetchData();
       }
   },
   created: function() {
       this.entryComp = this.entry;
   },
   mounted(){
-        this.fetchData();
-
+    console.log(this.entry);
+    this.fetchData();
   },
   
   methods: {

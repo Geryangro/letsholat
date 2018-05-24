@@ -4,7 +4,7 @@
       <b-row>
         <b-col cols="12" offset="">
           <b-row>
-            <entry v-for="(entry, index) in pages[currentPage-1]" :key="index" :id="entry.url"/>
+            <entry v-for="(entry, index) in pages[currentPage-1]" :key="index" :id="entry.url" :entry="entry"/>
           </b-row>
           <b-pagination
               align="center"
@@ -36,6 +36,9 @@ export default {
     entrys: function(val) {
       this.entries = val;
       this.loadDataEntry();
+    },
+    currentPage: function(value){
+      
     }
   },
   data () {
