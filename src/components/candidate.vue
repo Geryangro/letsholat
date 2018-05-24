@@ -68,6 +68,15 @@ export default {
       entrys : []
     }
   },
+  watch:{
+    search: function(value){
+      if(value.length > 3)
+        setTimeout(this.fetchSearchResult(value), 500);
+      if(value.length == 0)
+        setTimeout(this.loadEntry(), 500);
+
+    }
+  },
   metaInfo: {
     title: 'Kandidat Peserta Lets Sholat',
   },
@@ -94,6 +103,18 @@ export default {
           self.entrys = 'error dude' + error;
         })
     },
+    fetchSearchResult: function(keyword){
+      var self = this;
+        let url = this.apiUrl+'api/search';
+        axios.post(url,{q:keyword})
+        .then(function (response){
+          console.log(response);
+          self.entrys = response.data.result.participants;
+        })
+        .catch(function (error){
+          self.entrys = 'error dude' + error;
+        })
+    }
   }
 }
 </script>
