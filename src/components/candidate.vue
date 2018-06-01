@@ -12,15 +12,10 @@
             <div id="check" class="find-candidate">
               <b-col cols="12" md="10" offset-md="1">
                 <b-row>
-                  <b-col cols="8" md="8">
+                  <b-col cols="12" md="12">
                     <b-form-input class="inputText" id="exampleInput1" type="text" v-model="search"
-                            placeholder="Cari Anak">
+                            placeholder="Cari Nama Anak, Ketik Min 4 Karakter">
                     </b-form-input>
-                  </b-col>
-                  <b-col class="nopadding" cols="4" md="4">
-                    <b-button class="btn-search">
-                      <span>CARI</span>
-                    </b-button>
                   </b-col>
                   <b-col cols="12">
                     <b-row>
