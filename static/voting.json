@@ -1,0 +1,32 @@
+{
+   "status":"ok",
+   "result":{
+      "data":[
+         {
+            "title":"Kabsyah",
+            "umur":"3 Tahun",
+            "image":"static/image/Mba Astina.png"
+         },
+         {
+            "title":"Bejo",
+            "umur":"5 Tahun",
+            "image":"static/image/Mba Astina.png"
+         },
+         {
+            "title":"Angel",
+            "umur":"4 Tahun",
+            "image":"static/image/Mba Astina.png"
+         },
+         {
+            "title":"Sulaiman",
+            "umur":"6 Tahun",
+            "image":"static/image/Mba Astina.png"
+         },
+         {
+            "title":"Alex",
+            "umur":"4 Tahun",
+            "image":"static/image/Mba Astina.png"
+         }
+      ]
+   }
+}

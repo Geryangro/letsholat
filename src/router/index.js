@@ -6,6 +6,7 @@ import AuthFacebook from '@/components/AuthFacebook'
 import AuthFacebookCallback from '@/components/AuthFacebookCallback'
 import Candidate from '@/components/candidate'
 import Profile from '@/components/profile'
+import Voting from '@/components/voting'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/profile/:url',
       name: 'Profile Peserta',
       component: Profile
+    },
+    {
+      path: '/voting',
+      name: 'Voting Candidate',
+      component: Voting
     },
     {
       path: '/auth/facebook',

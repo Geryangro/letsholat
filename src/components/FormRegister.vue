@@ -8,22 +8,6 @@
         </div>
       </div>
     </b-modal>
-    <img :src="brandImage || '//www.gravatar.com/avatar/?d=mysteryman&s=200'" />
-
-<div>
-    <button type="button" v-on:click="$upload.select('brand-logo')" :disabled="$upload.meta('brand-logo').status === 'sending'">
-        Select Logo
-    </button>
-
-    <button type="button" v-on:click="$upload.start('brand-logo')" :disabled="$upload.meta('brand-logo').status === 'sending'">
-        <span v-show="$upload.meta('brand-logo').status === 'sending'">Saving...</span>
-        <span v-show="!$upload.meta('brand-logo').status === 'sending'">Save Logo</span>
-    </button>
-</div>
-
-<div v-if="$upload.files('brand-logo').error.length" class="text-danger">
-    {{ $upload.files('brand-logo').error[0].errors[0].message }}
-</div>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-row>
         <b-col cols="12" md="4">
@@ -108,7 +92,6 @@ export default {
   data () {
     return {
        // upload file
-      brandImage: null,
       show: true,
       file: null,
       form: {
@@ -123,29 +106,6 @@ export default {
         descriptions: ''
       },
     }
-  },
-  created(){
-    this.$upload.new('brand-logo', {
-        startOnSelect: false,
-        onSuccess(res) {
-            this.$msgbag.success('Brand logo uploaded successfully.');
-            this.brand = res.data.data;
-        },
-        onError() {
-            this.$msgbag.error('Error uploading brand logo.');
-        },
-        onSelect(files) {
-            files[0].preview((file) => {
-                this.brandImage = file.raw;
-            });
-        }
-    });
-  },
-  mounted() {
-    this.$upload.reset('brand-logo', {
-        url: 'brands/' + this.brand.id + '/logo'
-    });
-    this.brandImage = this.brand.logo || '//www.gravatar.com/avatar/?d=identicon&s=100';
   },
   methods: {
     onSubmit (evt) {
