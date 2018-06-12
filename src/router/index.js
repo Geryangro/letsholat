@@ -7,6 +7,8 @@ import AuthFacebookCallback from '@/components/AuthFacebookCallback'
 import Candidate from '@/components/candidate'
 import Profile from '@/components/profile'
 import Voting from '@/components/voting'
+import Announce from '@/components/announce'
+import Profilerank from '@/components/profilerank'
 
 Vue.use(Router)
 
@@ -37,6 +39,16 @@ export default new Router({
       path: '/voting',
       name: 'Voting Candidate',
       component: Voting
+    },
+    {
+      path: '/announce',
+      name: 'Hasil Pemenang',
+      component: Announce
+    },
+    {
+      path: '/profilerank',
+      name: 'Cerita Profile',
+      component: Profilerank
     },
     {
       path: '/auth/facebook',

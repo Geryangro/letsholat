@@ -1,23 +1,46 @@
 <template>
-  <div id="votingcandidate">
+  <b-col md="12" id="votingcandidate" class="nopadding">
     <b-container fluid>
       <b-row>
-        <b-col cols="12" md="8" offset-md="2" class="nopadding">
-            <div class="columnvote">
-                <p>TEXT</p>
-            </div>
+        <b-col cols="12" md="12" class="nopadding">
+            <voteprofile v-for="(voterankprofile, index) in voteRank" :key="index" :voterankprofile="voterankprofile" class="columnvote">
+                <!-- <p>TEXT</p> -->
+            </voteprofile>
         </b-col>
       </b-row>
     </b-container>
-  </div>
+  </b-col>
 </template>
 
 <script>
+import voteprofile from '@/components/voteprofile'
+
 export default {
   name: 'votingcandidate',
+  props: ['voteBio'],
+  components: {
+    voteprofile
+  },
+  watch: {
+    voteBio: function(val) {
+      this.voteBio = val;
+      this.sliceData();
+      console.log('test');
+    },
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      voteRank: [],
+    }
+  },
+  created: function(){
+    this.sliceData();
+  },
+  methods: {
+    sliceData: function(){
+      this.voteRank = this.voteBio.slice(0 , 2);
+      console.log(voteRank);
     }
   }
 }
