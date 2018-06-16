@@ -42,4 +42,41 @@ export default {
 .nopadding {
   padding: 0px !important;
 }
+.progress-bar {
+  background: linear-gradient(left, #3E9D7D, #69C18F), #fec951 !important;
+  background: -webkit-gradient(linear, left bottom, right top, from( #3E9D7D), to(#69C18F));
+  background: -moz-linear-gradient(to right, #3E9D7D, #69C18F);
+}
+.vuejs-countdown .digit {
+  font-size: 50px !important;
+  color: #5B7832 !important;
+  font-family: 'plumpfull';
+}
+.vuejs-countdown li:after {
+  font-size: 45px !important;
+  right: -16px !important;
+  color: #5B7832 !important;
+}
+.vuejs-countdown .text {
+  font-size: 35px !important;
+  color: #5B7832 !important;
+  font-family: 'plumpfull';
+}
+@media screen and (max-width: 450px) {
+  .vuejs-countdown .digit {
+  font-size: 25px !important;
+  color: #5B7832 !important;
+  font-family: 'plumpfull';
+}
+.vuejs-countdown li:after {
+  font-size: 15px !important;
+  right: -16px !important;
+  color: #5B7832 !important;
+}
+.vuejs-countdown .text {
+  font-size: 15px !important;
+  color: #5B7832 !important;
+  font-family: 'plumpfull';
+}
+}
 </style>
