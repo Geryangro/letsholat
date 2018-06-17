@@ -16,6 +16,7 @@ import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 import Vuex from 'vuex'
 
+Vue.use(require('@websanova/vue-upload'));
 Vue.use(Meta)
 Vue.use(VueGtm, {
   debug: true, 

@@ -4,24 +4,26 @@
       <b-row>
         <b-col cols="12" md="4" offset-md="8">    
           <div class="background-white">
-          <b-row>
-            <div class="middle">
-              <p>
-                  Yuk buat moment sholat jadi 
-                  menyenangkan! ikutan 
-                  #Let'sSholatBersamaAyah!
+            <b-row>
+              <b-col cols="12">
+                <b-img class="logo" :src="require('../assets/favicon.png')" />
+              </b-col>
+              <div class="middle">
+                <p>
+                    Berikan penilaian untuk 
+                    mendapatkan ebook ilmuwan muslim gratis!
+                    #letssholatbersamaayah
                 </p>
-            </div>
-            <div class="clearfix"></div>
-            <b-col cols="12">
-              <a  @click="auth()">
-                <b-button class="btn-fb">
-                  <b-img class="iconfb" :src="require('../assets/iconfb.png')"/>
-                  <span class="title-btn">masuk dengan facebook</span>
-                </b-button>
-              </a>
-            </b-col>
-          </b-row>
+              </div>
+              <b-col cols="12">
+                <a  @click="auth()">
+                  <b-button class="btn-fb">
+                    <b-img class="iconfb" :src="require('../assets/iconfb.png')"/>
+                    <span class="title-btn">masuk dengan facebook</span>
+                  </b-button>
+                </a>
+              </b-col>
+            </b-row>
           </div>
         </b-col>
       </b-row>
@@ -64,7 +66,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #login {
-    background-image: url('../assets/background11.jpg');
+    background-image: url('../assets/homevoting.jpg');
     height: 662px;
     background-size: cover;
     width: 100%;
@@ -75,18 +77,17 @@ export default {
   align-items: center;
 }
 .middle {
-  background-color: #ffffff;
-  padding: 20px 30px;
+  padding: 20px 30px 0px;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
   width: 340px;
 }
 .middle P {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 .btn-fb {
-  margin-top: 20px;
   background-color: #495B95;
   border-radius: 6px;
   border: none;
@@ -108,6 +109,9 @@ span.title-btn {
   margin-left: 5px;
 }
 @media screen and (max-width:768px) {
+  .logo {
+    display: none;
+  }
   #login {
       background-image: url('../assets/Login.jpg');
       background-size: 100% 100%;
