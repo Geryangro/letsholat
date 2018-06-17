@@ -124,13 +124,16 @@
             <b-row>
               <div id="grass" class="background-grass">
                 <b-col class="col-text-about">
-                  <h1 class="brown title-subhome-big">DAFTARKAN KELUARGA AYAH DAN BUNDA 
-                  DENGAN MENGISI FORM DI BAWAH INI!
+                  <h1 class="brown title-subhome-big">PENDAFTARAN SUDAH DITUTUP
                 </h1>
+                <a href="/candidate">
+                   <b-button class="btn-dftr">
+                 <span class="white">LIHAT PESERTA</span>
+                </b-button>
+                </a>
+               
                 </b-col>
-                <b-col cols="12" md="10" offset-md="1" style="margin-top: 40px;">
-                  <form-register></form-register>
-                </b-col>
+                
               </div>
             </b-row>
           </b-col>
@@ -490,7 +493,6 @@ ol.winner-criteria li > p {
   background-image: url('../assets/grass.png');
   padding: 80px 10px 40px;
   background-size: cover;
-  height: 1300px;
   width: 100%;
   z-index: 10;
   display: block;

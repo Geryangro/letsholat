@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     sliceData: function(){
-      this.voteRank = this.voteBio.slice(0 , 2);
+      this.voteRank = this.voteBio;
       console.log(voteRank);
     }
   }

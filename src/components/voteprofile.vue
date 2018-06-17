@@ -4,11 +4,11 @@
         <b-col cols="12" md="8" offset-md="2" class="nopadding">
             <b-row>
                 <b-col cols="4" md="4">
-                    <b-img class="img-logo" :src="voteimage.image" fluid/>
+                    <b-img class="img-logo" :src="apiUrl+'../uploads/'+voteimage.participant.url_img+'.jpg'" fluid/>
                 </b-col>
                 <b-col cols="8" md="8" class="col-percent">
                     <b-col cols="8" class="bio-percent nopadding">
-                        <p class="text-left name-agen">{{voteimage.title}}</p>
+                        <p class="text-left name-agen">{{voteimage.participant.child_name}}</p>
                         <b-progress class="w-100" variant="blue" :value="counter" :max="max"></b-progress>
                     </b-col>
                     <b-col cols="4" class="percent nopadding">
@@ -39,10 +39,12 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       voteimage: {
-          title: null,
-          image: null,
+        participant: {
+          child_name: null,
+          url_img: null,
           point: null,
           umur: null
+        }
       },
       pageNumber: 0,
       counter: 70,
