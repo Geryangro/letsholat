@@ -38,7 +38,8 @@ Vue.mixin({
   data: function() {
     return {
       get mainUrl() {
-        return "http://letssholat.com/";
+        //return "http://letssholat.com/";
+        return "http://localhost:8080/"
       },
       get apiUrl() {
         //return "http://api.letsshalat.local/index.php/";

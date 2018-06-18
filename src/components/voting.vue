@@ -13,35 +13,7 @@
                   kontestan Challenge #LetsSholatBersamaAyah favoritmu!
                 </p>
               </b-col>
-                
-                <b-col cols="12" md="8" offset-md="2" v-for="(vote,index) in voteBio" :key="index">
-                  <div class="col-vote">
-                    <b-row>
-                      <b-col cols="4" md="4">
-                        <b-img class="voteImg" :src="apiUrl+'../uploads/'+vote.participant.url_img+'.jpg'" fluid/>
-                      </b-col>
-                      <b-col cols="8" md="8">
-                        <div class="text-left float-left">
-                          <p class="voteText">{{vote.participant.child_name}}</p>
-                          <p class="voteText2">Umur : {{vote.participant.age}} Tahun</p>
-                          <br>
-                          <b-img class="star" :src="require('../assets/starmini.png')" fluid/>
-                          <p class="point-text">{{vote.point}} Point</p>
-                          <p style="popular-text">Popularity</p>
-                        </div>
-                        <b-button class="profile-btn float-right">
-                          <span>Story</span>
-                        </b-button>
-                        <b-button v-if="isLogin" v-on:click="vote" class="vote-btn float-right">
-                            Vote
-                        </b-button>
-                        <b-button v-else class="vote-btn float-right">
-                            Login via Facebook untuk Vote
-                        </b-button>                        
-                      </b-col>
-                    </b-row>
-                  </div>
-                </b-col>
+                <vote-single v-for="(finalist,index) in voteBio" :key="index"  :finalist="finalist" :isAlreadyVote="isAlreadyVote"/>
             </div>
             <div class="vote3">
               <b-col cols="12" md="10" offset-md="1">
@@ -59,17 +31,20 @@
 
 <script>
 import votecandidate from '@/components/votecandidate'
+import VoteSingle from '@/components/VoteSingle'
 import axios from 'axios'
 
 export default {
   name: 'voting',
   components: {
-    votecandidate
+    votecandidate,
+    VoteSingle
   },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       isLogin: false,
+      isAlreadyVote: false,
       voteBio: [],
     }
   },
@@ -81,7 +56,7 @@ export default {
   created: function(){
     let user = this.getUser();
     (user != null) ? this.isLogin = true : this.isLogin = false;
-    console.log(this.isLogin);
+    this.checkVote();
     this.loadDataVote();
   },
   methods: {
@@ -99,11 +74,14 @@ export default {
     getUser: function(){
       return JSON.parse(this.$cookie.get('user'));  
     },
-    vote: function(){
-      axios.get(this.apiUrl+'api/finalists')
+    checkVote: function(){
+      var self = this
+      let params = {
+        fb_id: this.getUser().fb_id
+      }
+      axios.post(this.apiUrl+'api/vote/check', params)
       .then(response =>{
-        let finalists = response.data.result.finalists
-        this.$set(this, 'voteBio', finalists)
+        this.$set(this, 'isAlreadyVote', response.data.result.has_vote);
       })
       .catch(e => {
 

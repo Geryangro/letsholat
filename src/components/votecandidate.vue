@@ -3,7 +3,7 @@
     <b-container fluid>
       <b-row>
         <b-col cols="12" md="12" class="nopadding">
-            <voteprofile v-for="(voterankprofile, index) in voteRank" :key="index" :voterankprofile="voterankprofile" class="columnvote">
+            <voteprofile v-for="(voterankprofile, index) in voteRank" :key="index" :voterankprofile="voterankprofile" :totalVote="totalVote" class="columnvote">
                 <!-- <p>TEXT</p> -->
             </voteprofile>
         </b-col>
@@ -25,23 +25,33 @@ export default {
     voteBio: function(val) {
       this.voteBio = val;
       this.sliceData();
-      console.log('test');
+      this.calculateTotalVote();
     },
   },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       voteRank: [],
+      totalVote: 0
     }
   },
   created: function(){
     this.sliceData();
+    this.calculateTotalVote();
   },
   methods: {
     sliceData: function(){
       this.voteRank = this.voteBio;
-      console.log(voteRank);
+    },
+    calculateTotalVote: function(){
+      var total = 0;
+      this.voteRank.forEach(function(element){
+        total += element.votes_count
+      })
+      this.$set(this, 'totalVote', total)
+
     }
+    
   }
 }
 </script>

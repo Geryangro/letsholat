@@ -26,14 +26,20 @@
 <script>
 export default {
   name: 'voteprofile',
-  props: ['voterankprofile'],
+  props: ['voterankprofile', 'totalVote'],
   watch: {
     voterankprofile: function(val) {
       this.voteimage = val;
     },
+    totalVote: function(val){
+      console.log(val);
+      this.getPercentage();
+    }
   },
   created: function(){
       this.voteimage = this.voterankprofile;
+      this.percentage = this.getPercentage();
+      this.counter = this.percentage;
   },
   data () {
     return {
@@ -47,7 +53,7 @@ export default {
         }
       },
       pageNumber: 0,
-      counter: 70,
+      counter: 0,
       max: 100,
       bars: [
          {value: 0},
@@ -55,6 +61,11 @@ export default {
       percentage: 0,
     }
   },
+  methods: {
+    getPercentage: function(){
+      return Math.round(this.voteimage.votes_count/(this.totalVote) * 100);
+    }
+  }
 }
 </script>
 
