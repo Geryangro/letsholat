@@ -22,18 +22,19 @@
             <b-button v-else-if="this.$parent.isLogin" v-on:click="doVote" class="vote-btn float-right">
                 Vote
             </b-button>
-            <b-button v-else class="vote-btn float-right">
+            <b-button v-on:click="login" v-else class="vote-btn float-right">
                 Login via Facebook untuk Vote
             </b-button>                        
           </b-col>
         </b-row>
       </div>
+     
      </b-col>
 </template>
 
 <script>
 import axios from 'axios'
-
+import Login from '@/components/Login'
 export default {
   name: 'VoteSingle',
   props: ['finalist', 'isAlreadyVote'],
@@ -44,14 +45,28 @@ export default {
             fb_id: user.fb_id,
             finalist_id: this.finalist.id    
         }
+        
         axios.post(this.$parent.apiUrl+'api/vote', params)
         .then(response =>{
-            console.log(response);
+           this.$parent.showModal(); 
         })
         .catch(e => {
 
         })
-    }
+        
+    },
+     login(){
+          let url = this.apiUrl+'api/login/facebook?redirect='+this.mainUrl+'auth/facebook/callback';
+          console.log(url);
+          axios.get(url)
+            .then(response => {
+              // JSON responses are automatically parsed.
+              window.location = response.data.result.redirect_url
+            })
+            .catch(e => {
+              this.errors.push(e)
+         })
+      }
   },
   watch: {
     voterankprofile: function(val) {

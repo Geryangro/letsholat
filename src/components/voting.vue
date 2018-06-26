@@ -26,6 +26,11 @@
         </b-col>
       </b-row>
     </b-container>
+      <!-- Using modifiers -->
+      <!-- the modal -->
+      <b-modal id="myModal" ref="myModal"  @ok="refreshPage" @cancel="refreshPage">
+        Vote Anda sudah diterima
+      </b-modal>
   </div>
 </template>
 
@@ -56,7 +61,8 @@ export default {
   created: function(){
     let user = this.getUser();
     (user != null) ? this.isLogin = true : this.isLogin = false;
-    this.checkVote();
+    if(this.isLogin)
+      this.checkVote();
     this.loadDataVote();
   },
   methods: {
@@ -65,6 +71,7 @@ export default {
       axios.get(this.apiUrl+'api/finalists')
       .then(response =>{
         let finalists = response.data.result.finalists
+        console.log(finalists);
         this.$set(this, 'voteBio', finalists)
       })
       .catch(e => {
@@ -75,17 +82,28 @@ export default {
       return JSON.parse(this.$cookie.get('user'));  
     },
     checkVote: function(){
+
       var self = this
       let params = {
         fb_id: this.getUser().fb_id
       }
       axios.post(this.apiUrl+'api/vote/check', params)
       .then(response =>{
+        console.log(response);
         this.$set(this, 'isAlreadyVote', response.data.result.has_vote);
       })
       .catch(e => {
-
+        console.log(e);
       })
+    },
+    showModal () {
+      this.$refs.myModal.show()
+    },
+    hideModal () {
+      this.$refs.myModal.hide()
+    },
+    refreshPage(){
+      window.location.href = this.mainUrl+'voting';
     }
   }
 }

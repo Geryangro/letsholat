@@ -24,7 +24,7 @@ export default {
               // JSON responses are automatically parsed.
               var loggedUser = response.data.result.user;
               self.$cookie.set('user', JSON.stringify(loggedUser), 1);
-              this.$router.push({path: '/home'});
+              this.$router.push({path: '/voting'});
             })
             .catch(e => {
                 console.log(e);
