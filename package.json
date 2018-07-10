@@ -20,6 +20,7 @@
     "vue-gtm": "^1.0.2",
     "vue-image-upload-resize": "^1.1.6",
     "vue-media-queries": "0.0.3",
+    "vue-meta": "^1.5.0",
     "vue-router": "^3.0.1",
     "vue-slick": "^1.1.12",
     "vue-youtube": "^1.2.5",

@@ -23,7 +23,7 @@
                                 </b-button> -->
                             </div>
                             <div class="col-facebook">
-                                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="1"></div>
+                                <div class="fb-comments" :data-href="mainUrl+'profile/'+profile.url" data-numposts="1"></div>
                                 <p>Share dan dapatkan like sebanyak-banyaknya <br>
                                     untuk menjadi <strong>Pemenang Favorite!</strong>
                                 </p>
@@ -77,9 +77,20 @@ export default {
     }
   },
   watch:{
-    profile: function(){
+    profile: function(value){
         this.$store.dispatch('FB_Parse')
     }
+  },
+  metaInfo () {
+      return {
+          title: this.profile.child_name,
+          meta: [
+              { vmid: 'og:image', name: 'og:image', content: this.apiUrl+'../uploads/'+this.profile.url_img+'.jpg' },
+              { vmid: 'og:title', name: 'og:title', content: this.profile.child_name + ' ' + this.profile.age + ' Tahun' },
+              { vmid: 'og:description', name: 'og:description', content: this.profile.descriptions },
+              
+          ]
+      }
   }
 }
 </script>

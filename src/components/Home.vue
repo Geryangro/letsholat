@@ -5,7 +5,7 @@
           <b-col cols="12" class="nopadding">
             <div class="nopadding homecls">
               <div class="">
-                <b-img @click="goto('form')" class="icon-btn-dropdown" :src="require('../assets/dropdown.png')" fluid/>
+                <b-img @click="goto('check')" class="icon-btn-dropdown" :src="require('../assets/dropdown.png')" fluid/>
               </div>
             </div>
           </b-col>
@@ -49,7 +49,11 @@
           </b-col>
           <b-col cols="12" class="nopadding">
             <div class="sub-price"></div>
-            <b-button @click="goto('form')" class="btn-dftr">
+            
+            <b-button v-if="isRegistered" :href="mainUrl+'profile/'+participant.url" class="btn-dftr">
+              <span class="white">LIHAT PROFIL ANDA</span>
+            </b-button>
+            <b-button v-else @click="goto('form')" class="btn-dftr">
               <span class="white">DAFTAR SEKARANG</span>
             </b-button>
             <b-col cols="12" class="col-text-about">
@@ -157,9 +161,20 @@ export default {
       bannerlast,
       formRegister
   },
+  metaInfo: {
+    title: 'Home',
+    meta: [
+      {
+        'property': 'og:title',
+        'content': 'Test title',
+        // 'mplattee': chunk => `${chunk} - My page` //or as string template: '%s - My page'
+      }
+    ]
+  },
   data () {
     return {
       isRegistered: false,
+      participant: null,
       user: null,
       show: true,
       types: [
@@ -236,9 +251,7 @@ export default {
   methods: {
     goto(refName) {
         var element = document.querySelector('#'+refName);
-        console.log(element);
         var rect = element.getBoundingClientRect();
-        console.log(rect);
         $('html, body').animate(
             {scrollTop: rect.top + window.pageYOffset - 20},
         1000);
@@ -288,7 +301,8 @@ export default {
       axios(url).then(response =>{
         let participant = response.data.result.participant;
         if(participant){
-          this.$set(this, 'isRegistered', true);
+          this.$set(this, 'participant', participant)
+          this.$set(this, 'isRegistered', true)
         }
       }).catch(e => {
 
