@@ -23,7 +23,7 @@
                                 </b-button> -->
                             </div>
                             <div class="col-facebook">
-                                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="1"></div>
+                                <div class="fb-comments" :data-href="mainUrl+'profile/'+profile.url" data-numposts="1"></div>
                                 <p>Share dan dapatkan like sebanyak-banyaknya <br>
                                     untuk menjadi <strong>Pemenang Favorite!</strong>
                                 </p>
