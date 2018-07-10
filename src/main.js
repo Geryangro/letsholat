@@ -16,6 +16,7 @@ import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 import Vuex from 'vuex'
 
+Vue.use(require('@websanova/vue-upload'));
 Vue.use(Meta)
 Vue.use(VueGtm, {
   debug: true, 
@@ -40,6 +41,7 @@ Vue.mixin({
         return "http://letssholat.com/";
       },
       get apiUrl() {
+        //return "http://api.letsshalat.local/index.php/";
         return "http://endpoint.letssholat.bazarafra.com/index.php/";
       }
     }
