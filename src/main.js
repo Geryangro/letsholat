@@ -41,6 +41,7 @@ Vue.mixin({
         return "http://letssholat.com/";
       },
       get apiUrl() {
+        //return "http://api.letsshalat.local/index.php/";
         return "http://endpoint.letssholat.bazarafra.com/index.php/";
       }
     }

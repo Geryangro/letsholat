@@ -18,12 +18,12 @@
                   <div class="col-vote">
                     <b-row>
                       <b-col cols="4" md="4">
-                        <b-img class="voteImg" :src="vote.image" fluid/>
+                        <b-img class="voteImg" :src="apiUrl+'../uploads/'+vote.participant.url_img+'.jpg'" fluid/>
                       </b-col>
                       <b-col cols="8" md="8">
                         <div class="text-left float-left">
-                          <p class="voteText">{{vote.title}}</p>
-                          <p class="voteText2">Umur : {{vote.umur}}</p>
+                          <p class="voteText">{{vote.participant.child_name}}</p>
+                          <p class="voteText2">Umur : {{vote.participant.age}} Tahun</p>
                           <br>
                           <b-img class="star" :src="require('../assets/starmini.png')" fluid/>
                           <p class="point-text">{{vote.point}} Point</p>
@@ -32,9 +32,12 @@
                         <b-button class="profile-btn float-right">
                           <span>Story</span>
                         </b-button>
-                        <b-button class="vote-btn float-right">
+                        <b-button v-if="isLogin" v-on:click="vote" class="vote-btn float-right">
                             Vote
-                          </b-button>                        
+                        </b-button>
+                        <b-button v-else class="vote-btn float-right">
+                            Login via Facebook untuk Vote
+                        </b-button>                        
                       </b-col>
                     </b-row>
                   </div>
@@ -66,6 +69,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
+      isLogin: false,
       voteBio: [],
     }
   },
@@ -75,19 +79,36 @@ export default {
     }
   },
   created: function(){
+    let user = this.getUser();
+    (user != null) ? this.isLogin = true : this.isLogin = false;
+    console.log(this.isLogin);
     this.loadDataVote();
   },
   methods: {
     loadDataVote: function() {
-      var self = this;
-      axios.get('/static/voting.json')
-        .then(function (response){
-          self.voteBio = response.data.result.data;
-        })
-        .catch(function (error){
-          self.voteBio = 'error dude' + error;
-        })
+      var self = this
+      axios.get(this.apiUrl+'api/finalists')
+      .then(response =>{
+        let finalists = response.data.result.finalists
+        this.$set(this, 'voteBio', finalists)
+      })
+      .catch(e => {
+
+      })
     },
+    getUser: function(){
+      return JSON.parse(this.$cookie.get('user'));  
+    },
+    vote: function(){
+      axios.get(this.apiUrl+'api/finalists')
+      .then(response =>{
+        let finalists = response.data.result.finalists
+        this.$set(this, 'voteBio', finalists)
+      })
+      .catch(e => {
+
+      })
+    }
   }
 }
 </script>
